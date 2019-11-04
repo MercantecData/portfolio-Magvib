@@ -1,0 +1,11 @@
+/Users/magnusnielsen/Projects/Array/Array/bin/Debug/netcoreapp3.0/Array
+/Users/magnusnielsen/Projects/Array/Array/bin/Debug/netcoreapp3.0/Array.deps.json
+/Users/magnusnielsen/Projects/Array/Array/bin/Debug/netcoreapp3.0/Array.runtimeconfig.json
+/Users/magnusnielsen/Projects/Array/Array/bin/Debug/netcoreapp3.0/Array.runtimeconfig.dev.json
+/Users/magnusnielsen/Projects/Array/Array/bin/Debug/netcoreapp3.0/Array.dll
+/Users/magnusnielsen/Projects/Array/Array/bin/Debug/netcoreapp3.0/Array.pdb
+/Users/magnusnielsen/Projects/Array/Array/obj/Debug/netcoreapp3.0/Array.csprojAssemblyReference.cache
+/Users/magnusnielsen/Projects/Array/Array/obj/Debug/netcoreapp3.0/Array.AssemblyInfoInputs.cache
+/Users/magnusnielsen/Projects/Array/Array/obj/Debug/netcoreapp3.0/Array.AssemblyInfo.cs
+/Users/magnusnielsen/Projects/Array/Array/obj/Debug/netcoreapp3.0/Array.dll
+/Users/magnusnielsen/Projects/Array/Array/obj/Debug/netcoreapp3.0/Array.pdb

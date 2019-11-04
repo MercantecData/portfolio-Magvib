@@ -1,0 +1,11 @@
+/Users/magnusnielsen/Projects/Grund/Grund/bin/Debug/netcoreapp3.0/Grund
+/Users/magnusnielsen/Projects/Grund/Grund/bin/Debug/netcoreapp3.0/Grund.deps.json
+/Users/magnusnielsen/Projects/Grund/Grund/bin/Debug/netcoreapp3.0/Grund.runtimeconfig.json
+/Users/magnusnielsen/Projects/Grund/Grund/bin/Debug/netcoreapp3.0/Grund.runtimeconfig.dev.json
+/Users/magnusnielsen/Projects/Grund/Grund/bin/Debug/netcoreapp3.0/Grund.dll
+/Users/magnusnielsen/Projects/Grund/Grund/bin/Debug/netcoreapp3.0/Grund.pdb
+/Users/magnusnielsen/Projects/Grund/Grund/obj/Debug/netcoreapp3.0/Grund.csprojAssemblyReference.cache
+/Users/magnusnielsen/Projects/Grund/Grund/obj/Debug/netcoreapp3.0/Grund.AssemblyInfoInputs.cache
+/Users/magnusnielsen/Projects/Grund/Grund/obj/Debug/netcoreapp3.0/Grund.AssemblyInfo.cs
+/Users/magnusnielsen/Projects/Grund/Grund/obj/Debug/netcoreapp3.0/Grund.dll
+/Users/magnusnielsen/Projects/Grund/Grund/obj/Debug/netcoreapp3.0/Grund.pdb

@@ -1,0 +1,11 @@
+/Users/magnusnielsen/Projects/CC/CC/obj/Debug/netcoreapp3.0/CC.csprojAssemblyReference.cache
+/Users/magnusnielsen/Projects/CC/CC/obj/Debug/netcoreapp3.0/CC.AssemblyInfoInputs.cache
+/Users/magnusnielsen/Projects/CC/CC/obj/Debug/netcoreapp3.0/CC.AssemblyInfo.cs
+/Users/magnusnielsen/Projects/CC/CC/bin/Debug/netcoreapp3.0/CC
+/Users/magnusnielsen/Projects/CC/CC/bin/Debug/netcoreapp3.0/CC.deps.json
+/Users/magnusnielsen/Projects/CC/CC/bin/Debug/netcoreapp3.0/CC.runtimeconfig.json
+/Users/magnusnielsen/Projects/CC/CC/bin/Debug/netcoreapp3.0/CC.runtimeconfig.dev.json
+/Users/magnusnielsen/Projects/CC/CC/bin/Debug/netcoreapp3.0/CC.dll
+/Users/magnusnielsen/Projects/CC/CC/bin/Debug/netcoreapp3.0/CC.pdb
+/Users/magnusnielsen/Projects/CC/CC/obj/Debug/netcoreapp3.0/CC.dll
+/Users/magnusnielsen/Projects/CC/CC/obj/Debug/netcoreapp3.0/CC.pdb

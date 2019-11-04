@@ -1,0 +1,11 @@
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/bin/Debug/netcoreapp3.0/Magic8Ball
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/bin/Debug/netcoreapp3.0/Magic8Ball.deps.json
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/bin/Debug/netcoreapp3.0/Magic8Ball.runtimeconfig.json
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/bin/Debug/netcoreapp3.0/Magic8Ball.runtimeconfig.dev.json
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/bin/Debug/netcoreapp3.0/Magic8Ball.dll
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/bin/Debug/netcoreapp3.0/Magic8Ball.pdb
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/obj/Debug/netcoreapp3.0/Magic8Ball.csprojAssemblyReference.cache
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/obj/Debug/netcoreapp3.0/Magic8Ball.AssemblyInfoInputs.cache
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/obj/Debug/netcoreapp3.0/Magic8Ball.AssemblyInfo.cs
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/obj/Debug/netcoreapp3.0/Magic8Ball.dll
+/Users/magnusnielsen/Projects/Magic8Ball/Magic8Ball/obj/Debug/netcoreapp3.0/Magic8Ball.pdb

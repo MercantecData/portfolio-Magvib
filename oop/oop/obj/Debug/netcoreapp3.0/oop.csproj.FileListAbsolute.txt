@@ -1,0 +1,11 @@
+/Users/magnusnielsen/Projects/oop/oop/bin/Debug/netcoreapp3.0/oop
+/Users/magnusnielsen/Projects/oop/oop/bin/Debug/netcoreapp3.0/oop.deps.json
+/Users/magnusnielsen/Projects/oop/oop/bin/Debug/netcoreapp3.0/oop.runtimeconfig.json
+/Users/magnusnielsen/Projects/oop/oop/bin/Debug/netcoreapp3.0/oop.runtimeconfig.dev.json
+/Users/magnusnielsen/Projects/oop/oop/bin/Debug/netcoreapp3.0/oop.dll
+/Users/magnusnielsen/Projects/oop/oop/bin/Debug/netcoreapp3.0/oop.pdb
+/Users/magnusnielsen/Projects/oop/oop/obj/Debug/netcoreapp3.0/oop.csprojAssemblyReference.cache
+/Users/magnusnielsen/Projects/oop/oop/obj/Debug/netcoreapp3.0/oop.AssemblyInfoInputs.cache
+/Users/magnusnielsen/Projects/oop/oop/obj/Debug/netcoreapp3.0/oop.AssemblyInfo.cs
+/Users/magnusnielsen/Projects/oop/oop/obj/Debug/netcoreapp3.0/oop.dll
+/Users/magnusnielsen/Projects/oop/oop/obj/Debug/netcoreapp3.0/oop.pdb

@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{3DC74F56-372B-4BD1-A26A-46526A811AF0}|Default">
+  <MonoDevelop.Ide.ItemProperties.Magic8Ball PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Magic8Ball/Program.cs">
+    <Files>
+      <File FileName="Magic8Ball/Program.cs" Line="15" Column="41" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Magic8Ball" expanded="True">
+            <Node name="Magic8Ball" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
