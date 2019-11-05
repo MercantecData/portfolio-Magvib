@@ -23,11 +23,9 @@ namespace Biblioteksobjekt
                 Console.WriteLine("[5] Remove Book");
                 Console.Write(": ");
                 int key = 101;
-                try
-                {
-                    key = Convert.ToInt32(Console.ReadLine());
-                }
-                catch (Exception)
+                bool res;
+                res = int.TryParse(Console.ReadLine(), out key);
+                if(res == false)
                 {
                     key = 101;
                 }
