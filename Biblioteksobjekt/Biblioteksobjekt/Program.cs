@@ -21,6 +21,7 @@ namespace Biblioteksobjekt
                 Console.WriteLine("[3] Rent Book");
                 Console.WriteLine("[4] Return Book");
                 Console.WriteLine("[5] Remove Book");
+                Console.WriteLine("[6] Rename Book");
                 Console.Write(": ");
                 int key;
                 bool res = int.TryParse(Console.ReadLine(), out key);
@@ -208,6 +209,50 @@ namespace Biblioteksobjekt
                                 if (choice - 1 <= Bibliotek.BogCount() && choice - 1 >= 0)
                                 {
                                     Console.WriteLine(Bibliotek.RemoveBog(choice - 1));
+                                    Console.ReadLine();
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Out of range");
+                                    Console.ReadLine();
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("There is no books in this collection");
+                            Console.ReadLine();
+                            break;
+                        }
+                    case 6:
+                        Console.Clear();
+                        if (Bibliotek.BogCount() != 0)
+                        {
+                            Console.WriteLine("[9] Exit");
+                            for (int i = 0; i < Bibliotek.BogCount(); i++)
+                            {
+                                Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
+                            }
+                            int choice;
+                            bool res2 = int.TryParse(Console.ReadLine(), out choice);
+                            if (res2 == false)
+                            {
+                                choice = 101;
+                                break;
+                            }
+                            if (choice == 9)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (choice - 1 < Bibliotek.BogCount() && choice - 1 >= 0)
+                                {
+                                    Console.Write("Rename: ");
+                                    string rename = Console.ReadLine();
+                                    Console.WriteLine(Bibliotek.BogEdit(choice - 1, rename));
                                     Console.ReadLine();
                                     break;
                                 }

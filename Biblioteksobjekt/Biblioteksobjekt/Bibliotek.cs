@@ -72,5 +72,11 @@ namespace Biblioteksobjekt
         {
             return Bog[id].title;
         }
+
+        public string BogEdit(int id, string title)
+        {
+            Bog[id].title = title;
+            return "Now the book title is " + Bog[id].title;
+        }
     }
 }
