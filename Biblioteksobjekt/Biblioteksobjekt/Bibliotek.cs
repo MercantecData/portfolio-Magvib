@@ -13,59 +13,64 @@ namespace Biblioteksobjekt
             this.name = name;
         }
 
-        public void BogCount()
+        public int BogCount()
         {
-            Console.WriteLine("Books: " + Bog.Count);
+            return Bog.Count;
         }
 
         public void AddBog(Bog Title)
         {
             Bog.Add(Title);
-            Console.WriteLine("You have now added a book");
         }
 
-        public void RemoveBog(int id)
+        public string RemoveBog(int id)
         {
+            string name = Bog[id].title;
             Bog.RemoveAt(id);
-            Console.WriteLine("You have now deleted this book");
+            return "Removed book named " + name;
         }
 
-        public void RentBog(int id, int days)
+        public string RentBog(int id, int days)
         {
             Bog[id].isRented = true;
             Bog[id].dueDate = days;
-            Console.WriteLine("You have rented this book in " + Bog[id].dueDate + " days");
+            return "You have rented " + Bog[id].title + " in " + Bog[id].dueDate + " days";
+
         }
 
-        public void RentCheck(int id)
+        public string RentCheck(int id)
         {
+            string message;
             if (Bog[id].isRented)
             {
-                Console.WriteLine("This book is rented in " + Bog[id].dueDate + " days");
+                message = "This book is rented in " + Bog[id].dueDate + " days";
             }
             else
             {
-                Console.WriteLine("This book is not rented");
+                message = "This book is not rented";
             }
+            return message;
         }
 
-        public void ReturnBog(int id)
+        public string ReturnBog(int id)
         {
+            string message;
             if (Bog[id].isRented)
             {
                 Bog[id].isRented = false;
                 Bog[id].dueDate = 0;
-                Console.WriteLine("You have now returned the book");
+                message = "You have now returned the book";
             }
             else
             {
-                Console.WriteLine("Book not rented");
+                message = "Book is not rented";
             }
+            return message;
         }
 
-        public void BogTitle(int id)
+        public string BogTitle(int id)
         {
-            Console.WriteLine(Bog[id].title);
+            return Bog[id].title;
         }
     }
 }
