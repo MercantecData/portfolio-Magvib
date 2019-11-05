@@ -1,0 +1,3 @@
+Credit number: 1234123412341234
+MM/YY: 1234
+CVC: 123

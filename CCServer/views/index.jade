@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1(style={color: "#EF6C00"})= title
+  li(style={color: "#EF6C00"}) Here is a list of all the credit cards
+  br
+  each item in cards
+    //- a(style={color: "#EF6C00"}, href="/creditcard/" + item + "/delete")  X  
+    button(style={color: "#EF6C00"}, onclick="window.location.href='/creditcard/" + item + "/delete'")  X  
+    a   
+    a(style={color: "#EF6C00"}, href="/creditcard/" + item + "/x") #{item}
+    br
+    br

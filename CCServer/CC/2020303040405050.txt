@@ -1,0 +1,3 @@
+Credit number: 2020303040405050
+MM/YY: 2345
+CVC: 123

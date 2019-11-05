@@ -1,0 +1,3 @@
+Credit number: 4321432143214321
+MM/YY: 4321
+CVC: 321
