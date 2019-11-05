@@ -22,10 +22,9 @@ namespace Biblioteksobjekt
                 Console.WriteLine("[4] Return Book");
                 Console.WriteLine("[5] Remove Book");
                 Console.Write(": ");
-                int key = 101;
-                bool res;
-                res = int.TryParse(Console.ReadLine(), out key);
-                if(res == false)
+                int key;
+                bool res = int.TryParse(Console.ReadLine(), out key);
+                if (res == false)
                 {
                     key = 101;
                 }
@@ -48,14 +47,20 @@ namespace Biblioteksobjekt
                             {
                                 Console.WriteLine("[" + (i+1) + "] " + Bibliotek.BogTitle(i));
                             }
-                            int choice = Convert.ToInt32(Console.ReadLine());
+                            int choice;
+                            bool res2 = int.TryParse(Console.ReadLine(), out choice);
+                            if(res2 == false)
+                            {
+                                choice = 101;
+                                break;
+                            }
                             if (choice == 9)
                             {
                                 break;
                             }
                             else
                             {
-                                if(choice - 1 <= Bibliotek.BogCount() && choice - 1 >= 0)
+                                if(choice - 1 < Bibliotek.BogCount() && choice - 1 >= 0)
                                 {
                                     Console.WriteLine(Bibliotek.RentCheck(choice - 1));
                                     Console.ReadLine();
@@ -84,18 +89,31 @@ namespace Biblioteksobjekt
                             {
                                 Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
                             }
-                            int choice = Convert.ToInt32(Console.ReadLine());
+                            int choice;
+                            bool res3 = int.TryParse(Console.ReadLine(), out choice);
+                            if (res3 == false)
+                            {
+                                choice = 101;
+                                break;
+                            }
                             if (choice == 9)
                             {
                                 break;
                             }
                             else
                             {
-                                if (choice - 1 <= Bibliotek.BogCount() && choice - 1 >= 0)
+                                if (choice - 1 < Bibliotek.BogCount() && choice - 1 >= 0)
                                 {
                                     Console.WriteLine("How many days do you want the book?");
                                     Console.WriteLine("Between 1 and 14 days");
-                                    int days = Convert.ToInt32(Console.ReadLine());
+                                    int days;
+                                    bool res4 = int.TryParse(Console.ReadLine(), out days);
+                                    if (res4 == false)
+                                    {
+                                        Console.WriteLine("Out of range");
+                                        Console.ReadLine();
+                                        break;
+                                    }
                                     if (days > 14 && days < 0)
                                     {
                                         Console.WriteLine("Out of range");
@@ -132,7 +150,13 @@ namespace Biblioteksobjekt
                             {
                                 Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
                             }
-                            int choice = Convert.ToInt32(Console.ReadLine());
+                            int choice;
+                            bool res2 = int.TryParse(Console.ReadLine(), out choice);
+                            if (res2 == false)
+                            {
+                                choice = 101;
+                                break;
+                            }
                             if (choice == 9)
                             {
                                 break;
@@ -168,7 +192,13 @@ namespace Biblioteksobjekt
                             {
                                 Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
                             }
-                            int choice = Convert.ToInt32(Console.ReadLine());
+                            int choice;
+                            bool res5 = int.TryParse(Console.ReadLine(), out choice);
+                            if (res5 == false)
+                            {
+                                choice = 101;
+                                break;
+                            }
                             if (choice == 9)
                             {
                                 break;
@@ -205,20 +235,6 @@ namespace Biblioteksobjekt
                 }
 
             }
-
-
-            /*
-            Bibliotek.AddBog(new Bog("Test"));
-            Bibliotek.AddBog(new Bog("Test2"));
-            
-            Bibliotek.BogCount();
-            Bibliotek.BogTitle(0);
-            Bibliotek.RentCheck(0);
-            Bibliotek.RentBog(0, 3);
-            Bibliotek.RentCheck(0);
-            Bibliotek.ReturnBog(0);
-            Bibliotek.RentCheck(0);
-            Bibliotek.RemoveBog(0); */
         }
     }
 }
