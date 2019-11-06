@@ -1,4 +1,4 @@
-# portfolio-Magvib
+# portfolio-Magvib / Magnus Bjørn Nielsen
 
 
 ## Credit Card System
@@ -9,7 +9,7 @@
 ### Here we have the information from one of the reditcards.
 ![](https://github.com/MercantecData/portfolio-Magvib/blob/master/CC/pic/pic3.png)
 
-## CCMobilem
+## CCMobile
 ### Here we have the mobile version of the Credit Card System
 <img src="./CCMobile/pic/pic.jpg" width="250" height="500">
 <!-- ![](https://github.com/MercantecData/portfolio-Magvib/blob/master/CCMobile/pic/pic.jpg) -->
