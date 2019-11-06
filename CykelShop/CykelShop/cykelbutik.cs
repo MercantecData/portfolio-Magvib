@@ -33,6 +33,19 @@ namespace CykelShop
             return array;
         }
 
+        public List<string> CyklerModelsRed()
+        {
+            List<string> array = new List<string>();
+            for (int i = 0; i < CyklerAntal(); i++)
+            {
+                if (Cykler[i].color == "Red")
+                {
+                    array.Add(Cykler[i].model + " : " + Cykler[i].color);
+                }
+            }
+            return array;
+        }
+
         public List<double> CyklerWheelsUnder(double Size)
         {
             List<double> array = new List<double>();
