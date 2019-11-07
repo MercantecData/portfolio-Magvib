@@ -14,7 +14,7 @@ namespace Biblioteksobjekt
             while (isRunning)
             {
                 Console.Clear();
-                Console.WriteLine("Biblioteks System!");
+                Console.WriteLine(Bibliotek.name + "s " + "Biblioteks System!");
                 Console.WriteLine("[9] Exit");
                 Console.WriteLine("[1] Create Book");
                 Console.WriteLine("[2] Check if Book is rented and list of books");
