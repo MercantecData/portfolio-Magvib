@@ -23,7 +23,7 @@
 ![](https://github.com/MercantecData/portfolio-Magvib/blob/master/CCServer/pic/pic3.png)
 
 ## BiblioteksProject
-![](https://github.com/MercantecData/portfolio-Magvib/blob/master/Biblioteksobjekt/pic/pic.png)
+![](https://github.com/MercantecData/portfolio-Magvib/blob/master/Biblioteksobjekt/pic/pic2.png)
 
 ## Guess Game
 ![](https://github.com/MercantecData/portfolio-Magvib/blob/master/Guess/pic/pic1.png)
