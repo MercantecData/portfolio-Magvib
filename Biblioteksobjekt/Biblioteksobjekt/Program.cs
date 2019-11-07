@@ -6,9 +6,28 @@ namespace Biblioteksobjekt
     {
         static void Main(string[] args)
         {
-            
 
             Bibliotek Bibliotek = new Bibliotek("Viborg");
+
+            void List()
+            {
+                Console.WriteLine("[9] Exit");
+                for (int i = 0; i < Bibliotek.BogCount(); i++)
+                {
+                    Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
+                }
+            }
+            void Range()
+            {
+                Console.WriteLine("Out of range");
+                Console.ReadLine();
+            }
+            void Empty()
+            {
+                Console.WriteLine("There is no books in this collection");
+                Console.ReadLine();
+            }
+            
 
             bool isRunning = true;
             while (isRunning)
@@ -43,11 +62,7 @@ namespace Biblioteksobjekt
                         Console.Clear();
                         if(Bibliotek.BogCount() != 0)
                         {
-                            Console.WriteLine("[9] Exit");
-                            for (int i = 0; i < Bibliotek.BogCount(); i++)
-                            {
-                                Console.WriteLine("[" + (i+1) + "] " + Bibliotek.BogTitle(i));
-                            }
+                            List();
                             int choice;
                             bool res2 = int.TryParse(Console.ReadLine(), out choice);
                             if(res2 == false)
@@ -69,27 +84,21 @@ namespace Biblioteksobjekt
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Out of range");
-                                    Console.ReadLine();
+                                    Range();
                                     break;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("There is no books in this collection");
-                            Console.ReadLine();
+                            Empty();
                             break;
                         }
                     case 3:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
-                            Console.WriteLine("[9] Exit");
-                            for (int i = 0; i < Bibliotek.BogCount(); i++)
-                            {
-                                Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
-                            }
+                            List();
                             int choice;
                             bool res3 = int.TryParse(Console.ReadLine(), out choice);
                             if (res3 == false)
@@ -111,14 +120,12 @@ namespace Biblioteksobjekt
                                     bool res4 = int.TryParse(Console.ReadLine(), out days);
                                     if (res4 == false)
                                     {
-                                        Console.WriteLine("Out of range");
-                                        Console.ReadLine();
+                                        Range();
                                         break;
                                     }
                                     if (days > 14 && days < 0)
                                     {
-                                        Console.WriteLine("Out of range");
-                                        Console.ReadLine();
+                                        Range();
                                         break;
                                     }
                                     else
@@ -130,27 +137,21 @@ namespace Biblioteksobjekt
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Out of range");
-                                    Console.ReadLine();
+                                    Range();
                                     break;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("There is no books in this collection");
-                            Console.ReadLine();
+                            Empty();
                             break;
                         }
                     case 4:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
-                            Console.WriteLine("[9] Exit");
-                            for (int i = 0; i < Bibliotek.BogCount(); i++)
-                            {
-                                Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
-                            }
+                            List();
                             int choice;
                             bool res2 = int.TryParse(Console.ReadLine(), out choice);
                             if (res2 == false)
@@ -172,27 +173,21 @@ namespace Biblioteksobjekt
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Out of range");
-                                    Console.ReadLine();
+                                    Range();
                                     break;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("There is no books in this collection");
-                            Console.ReadLine();
+                            Empty();
                             break;
                         }
                     case 5:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
-                            Console.WriteLine("[9] Exit");
-                            for (int i = 0; i < Bibliotek.BogCount(); i++)
-                            {
-                                Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
-                            }
+                            List();
                             int choice;
                             bool res5 = int.TryParse(Console.ReadLine(), out choice);
                             if (res5 == false)
@@ -214,27 +209,21 @@ namespace Biblioteksobjekt
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Out of range");
-                                    Console.ReadLine();
+                                    Range();
                                     break;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("There is no books in this collection");
-                            Console.ReadLine();
+                            Empty();
                             break;
                         }
                     case 6:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
-                            Console.WriteLine("[9] Exit");
-                            for (int i = 0; i < Bibliotek.BogCount(); i++)
-                            {
-                                Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.BogTitle(i));
-                            }
+                            List();
                             int choice;
                             bool res2 = int.TryParse(Console.ReadLine(), out choice);
                             if (res2 == false)
@@ -258,16 +247,14 @@ namespace Biblioteksobjekt
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Out of range");
-                                    Console.ReadLine();
+                                    Range();
                                     break;
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("There is no books in this collection");
-                            Console.ReadLine();
+                            Empty();
                             break;
                         }
                     case 9:
