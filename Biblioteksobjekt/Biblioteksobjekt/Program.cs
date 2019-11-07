@@ -8,6 +8,7 @@ namespace Biblioteksobjekt
         {
 
             Bibliotek Bibliotek = new Bibliotek("Viborg");
+            Bibliotek.AddKunde(new Kunder("Magnus"));
 
             void List()
             {
@@ -41,6 +42,7 @@ namespace Biblioteksobjekt
                 Console.WriteLine("[4] Return Book");
                 Console.WriteLine("[5] Remove Book");
                 Console.WriteLine("[6] Rename Book");
+                Console.WriteLine("[7] Kunder List");
                 Console.Write(": ");
                 int key;
                 bool res = int.TryParse(Console.ReadLine(), out key);
@@ -130,7 +132,7 @@ namespace Biblioteksobjekt
                                     }
                                     else
                                     {
-                                        Console.WriteLine(Bibliotek.RentBog(choice - 1, days));
+                                        Console.WriteLine(Bibliotek.RentBog(choice - 1, days, 0));
                                         Console.ReadLine();
                                         break;
                                     }
@@ -251,6 +253,51 @@ namespace Biblioteksobjekt
                                     break;
                                 }
                             }
+                        }
+                        else
+                        {
+                            Empty();
+                            break;
+                        }
+                    case 7:
+                        Console.Clear();
+                        if(Bibliotek.Kunder.Count != 0)
+                        {
+                            Console.WriteLine("[9] Exit");
+                            for (int i = 0; i < Bibliotek.Kunder.Count; i++)
+                            {
+                                Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.Kunder[i].name);
+                            }
+                            int choice;
+                            bool res2 = int.TryParse(Console.ReadLine(), out choice);
+                            if (res2 == false)
+                            {
+                                choice = 101;
+                                break;
+                            }
+                            if (choice == 9)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (choice - 1 < Bibliotek.Kunder.Count && choice - 1 >= 0)
+                                {
+                                    Console.WriteLine("All rented books from " + Bibliotek.Kunder[choice - 1].name);
+                                    for (int i = 0; i < Bibliotek.Kunder[choice - 1].BogCount(); i++)
+                                    {
+                                        Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.Kunder[choice - 1].BogTitle(i) + " rented in " + Bibliotek.Kunder[choice - 1].Bog[i].dueDate + " days");
+                                    }
+                                    Console.ReadLine();
+                                    break;
+                                }
+                                else
+                                {
+                                    Range();
+                                    break;
+                                }
+                            }
+
                         }
                         else
                         {

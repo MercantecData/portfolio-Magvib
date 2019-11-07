@@ -7,6 +7,7 @@ namespace Biblioteksobjekt
     {
         public string name;
         public List<Bog> Bog = new List<Bog>();
+        public List<Kunder> Kunder = new List<Kunder>();
 
         public Bibliotek(string name)
         {
@@ -16,6 +17,11 @@ namespace Biblioteksobjekt
         public int BogCount()
         {
             return Bog.Count;
+        }
+
+        public void AddKunde(Kunder Name)
+        {
+            Kunder.Add(Name);
         }
 
         public void AddBog(Bog Title)
@@ -30,10 +36,13 @@ namespace Biblioteksobjekt
             return "Removed book named " + name;
         }
 
-        public string RentBog(int id, int days)
+        public string RentBog(int id, int days, int kundeid)
         {
             Bog[id].isRented = true;
             Bog[id].dueDate = days;
+            Bog[id].rentedBy = Kunder[kundeid].name;
+            Bog[id].rentedById = kundeid;
+            Kunder[kundeid].AddBog(Bog[id]);
             return "You have rented " + Bog[id].title + " in " + Bog[id].dueDate + " days";
 
         }
@@ -43,7 +52,7 @@ namespace Biblioteksobjekt
             string message;
             if (Bog[id].isRented)
             {
-                message = "This book is rented in " + Bog[id].dueDate + " days";
+                message = "This book is rented by " + Bog[id].rentedBy + " in " + Bog[id].dueDate + " days";
             }
             else
             {
@@ -59,6 +68,8 @@ namespace Biblioteksobjekt
             {
                 Bog[id].isRented = false;
                 Bog[id].dueDate = 0;
+                Bog[id].rentedBy = null;
+                Kunder[Bog[id].rentedById].Bog.Remove(Bog[id]);
                 message = "You have now returned the book";
             }
             else
