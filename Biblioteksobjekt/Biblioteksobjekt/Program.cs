@@ -37,6 +37,7 @@ namespace Biblioteksobjekt
                 Console.WriteLine(Bibliotek.name + "s " + "Biblioteks System!");
                 Console.WriteLine("[9] Exit");
                 Console.WriteLine("[1] Create Book");
+                Console.WriteLine("[1] Create Kunde");
                 Console.WriteLine("[2] Check if Book is rented and list of books");
                 Console.WriteLine("[3] Rent Book");
                 Console.WriteLine("[4] Return Book");
@@ -61,6 +62,14 @@ namespace Biblioteksobjekt
                         Console.ReadLine();
                         break;
                     case 2:
+                        Console.Clear();
+                        Console.Write("Type in the name of the new kunde: ");
+                        string KundeName = Console.ReadLine();
+                        Bibliotek.AddKunde(new Kunder(KundeName));
+                        Console.WriteLine("You have now added a book named " + KundeName);
+                        Console.ReadLine();
+                        break;
+                    case 3:
                         Console.Clear();
                         if(Bibliotek.BogCount() != 0)
                         {
@@ -96,7 +105,7 @@ namespace Biblioteksobjekt
                             Empty();
                             break;
                         }
-                    case 3:
+                    case 4:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
@@ -149,7 +158,7 @@ namespace Biblioteksobjekt
                             Empty();
                             break;
                         }
-                    case 4:
+                    case 5:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
@@ -185,7 +194,7 @@ namespace Biblioteksobjekt
                             Empty();
                             break;
                         }
-                    case 5:
+                    case 6:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
@@ -221,7 +230,7 @@ namespace Biblioteksobjekt
                             Empty();
                             break;
                         }
-                    case 6:
+                    case 7:
                         Console.Clear();
                         if (Bibliotek.BogCount() != 0)
                         {
@@ -259,7 +268,7 @@ namespace Biblioteksobjekt
                             Empty();
                             break;
                         }
-                    case 7:
+                    case 8:
                         Console.Clear();
                         if(Bibliotek.Kunder.Count != 0)
                         {
