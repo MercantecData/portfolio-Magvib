@@ -5,7 +5,7 @@ namespace Biblioteksobjekt
     {
         public string title;
         public bool isRented;
-        public string rentedBy;
+        public Kunder rentedBy;
         public int rentedById;
         public int dueDate;
 

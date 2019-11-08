@@ -40,7 +40,7 @@ namespace Biblioteksobjekt
         {
             Bog[id].isRented = true;
             Bog[id].dueDate = days;
-            Bog[id].rentedBy = Kunder[kundeid].name;
+            Bog[id].rentedBy = Kunder[kundeid];
             Bog[id].rentedById = kundeid;
             Kunder[kundeid].AddBog(Bog[id]);
             return "You have rented " + Bog[id].title + " in " + Bog[id].dueDate + " days";
@@ -52,7 +52,7 @@ namespace Biblioteksobjekt
             string message;
             if (Bog[id].isRented)
             {
-                message = "This book is rented by " + Bog[id].rentedBy + " in " + Bog[id].dueDate + " days";
+                message = "This book is rented by " + Bog[id].rentedBy.name + " in " + Bog[id].dueDate + " days";
             }
             else
             {
