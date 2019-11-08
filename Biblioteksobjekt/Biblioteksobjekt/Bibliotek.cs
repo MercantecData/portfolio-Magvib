@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Biblioteksobjekt
@@ -36,7 +36,7 @@ namespace Biblioteksobjekt
             return "Removed book named " + name;
         }
 
-        public string RentBog(int id, int days, int kundeid)
+        public string RentBog(int id, int days, Kunder kunde)
         {
             Bog[id].isRented = true;
             Bog[id].dueDate = days;
