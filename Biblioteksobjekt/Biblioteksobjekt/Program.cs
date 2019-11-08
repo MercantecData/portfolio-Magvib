@@ -8,7 +8,7 @@ namespace Biblioteksobjekt
         {
 
             Bibliotek Bibliotek = new Bibliotek("Viborg");
-            Bibliotek.AddKunde(new Kunder("Magnus"));
+            Bibliotek.AddKunde(new Kunder("Guest"));
 
             void List()
             {
@@ -37,13 +37,13 @@ namespace Biblioteksobjekt
                 Console.WriteLine(Bibliotek.name + "s " + "Biblioteks System!");
                 Console.WriteLine("[9] Exit");
                 Console.WriteLine("[1] Create Book");
-                Console.WriteLine("[1] Create Kunde");
-                Console.WriteLine("[2] Check if Book is rented and list of books");
-                Console.WriteLine("[3] Rent Book");
-                Console.WriteLine("[4] Return Book");
-                Console.WriteLine("[5] Remove Book");
-                Console.WriteLine("[6] Rename Book");
-                Console.WriteLine("[7] Kunder List");
+                Console.WriteLine("[2] Create Kunde");
+                Console.WriteLine("[3] Check if Book is rented and list of books");
+                Console.WriteLine("[4] Rent Book");
+                Console.WriteLine("[5] Return Book");
+                Console.WriteLine("[6] Remove Book");
+                Console.WriteLine("[7] Rename Book");
+                Console.WriteLine("[8] Kunder List");
                 Console.Write(": ");
                 int key;
                 bool res = int.TryParse(Console.ReadLine(), out key);
@@ -123,32 +123,59 @@ namespace Biblioteksobjekt
                             }
                             else
                             {
-                                if (choice - 1 < Bibliotek.BogCount() && choice - 1 >= 0)
+                                if(Bibliotek.Kunder.Count != 0)
                                 {
-                                    Console.WriteLine("How many days do you want the book?");
-                                    Console.WriteLine("Between 1 and 14 days");
-                                    int days;
-                                    bool res4 = int.TryParse(Console.ReadLine(), out days);
-                                    if (res4 == false)
+                                    Console.WriteLine("[9] Exit");
+                                    for (int i = 0; i < Bibliotek.Kunder.Count; i++)
                                     {
-                                        Range();
+                                        Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.Kunder[i].name);
+                                    }
+                                    int choice2;
+                                    bool res2 = int.TryParse(Console.ReadLine(), out choice2);
+                                    if (res2 == false)
+                                    {
+                                        choice2 = 101;
                                         break;
                                     }
-                                    if (days > 14 && days < 0)
+                                    if (choice2 == 9)
                                     {
-                                        Range();
                                         break;
                                     }
                                     else
                                     {
-                                        Console.WriteLine(Bibliotek.RentBog(choice - 1, days, 0));
-                                        Console.ReadLine();
-                                        break;
+                                        if (choice - 1 < Bibliotek.BogCount() && choice - 1 >= 0)
+                                        {
+                                            Console.WriteLine("How many days do you want the book?");
+                                            Console.WriteLine("Between 1 and 14 days");
+                                            int days;
+                                            bool res4 = int.TryParse(Console.ReadLine(), out days);
+                                            if (res4 == false)
+                                            {
+                                                Range();
+                                                break;
+                                            }
+                                            if (days > 14 && days < 0)
+                                            {
+                                                Range();
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine(Bibliotek.RentBog(choice - 1, days, choice2 -1));
+                                                Console.ReadLine();
+                                                break;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Range();
+                                            break;
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    Range();
+                                    Empty();
                                     break;
                                 }
                             }
@@ -290,20 +317,28 @@ namespace Biblioteksobjekt
                             }
                             else
                             {
-                                if (choice - 1 < Bibliotek.Kunder.Count && choice - 1 >= 0)
+                                if (Bibliotek.Kunder[choice - 1].BogCount() <= 0)
                                 {
-                                    Console.WriteLine("All rented books from " + Bibliotek.Kunder[choice - 1].name);
-                                    for (int i = 0; i < Bibliotek.Kunder[choice - 1].BogCount(); i++)
-                                    {
-                                        Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.Kunder[choice - 1].BogTitle(i) + " rented in " + Bibliotek.Kunder[choice - 1].Bog[i].dueDate + " days");
-                                    }
-                                    Console.ReadLine();
+                                    Empty();
                                     break;
                                 }
                                 else
                                 {
-                                    Range();
-                                    break;
+                                    if (choice - 1 < Bibliotek.Kunder.Count && choice - 1 >= 0)
+                                    {
+                                        Console.WriteLine("All rented books from " + Bibliotek.Kunder[choice - 1].name);
+                                        for (int i = 0; i < Bibliotek.Kunder[choice - 1].BogCount(); i++)
+                                        {
+                                            Console.WriteLine("[" + (i + 1) + "] " + Bibliotek.Kunder[choice - 1].BogTitle(i) + " rented in " + Bibliotek.Kunder[choice - 1].Bog[i].dueDate + " days");
+                                        }
+                                        Console.ReadLine();
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Range();
+                                        break;
+                                    }
                                 }
                             }
 
