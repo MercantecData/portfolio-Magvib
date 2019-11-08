@@ -36,13 +36,12 @@ namespace Biblioteksobjekt
             return "Removed book named " + name;
         }
 
-        public string RentBog(int id, int days, int kundeid)
+        public string RentBog(int id, int days, Kunder kunde)
         {
             Bog[id].isRented = true;
             Bog[id].dueDate = days;
-            Bog[id].rentedBy = Kunder[kundeid];
-            Bog[id].rentedById = kundeid;
-            Kunder[kundeid].AddBog(Bog[id]);
+            Bog[id].rentedBy = kunde;
+            kunde.AddBog(Bog[id]);
             return "You have rented " + Bog[id].title + " in " + Bog[id].dueDate + " days";
 
         }
@@ -66,10 +65,11 @@ namespace Biblioteksobjekt
             string message;
             if (Bog[id].isRented)
             {
+                Kunder.Remove(Bog[id].rentedBy);
+                // Kunder[Bog[id].rentedById].Bog.Remove(Bog[id]);
                 Bog[id].isRented = false;
                 Bog[id].dueDate = 0;
                 Bog[id].rentedBy = null;
-                Kunder[Bog[id].rentedById].Bog.Remove(Bog[id]);
                 message = "You have now returned the book";
             }
             else

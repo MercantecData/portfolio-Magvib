@@ -161,7 +161,7 @@ namespace Biblioteksobjekt
                                             }
                                             else
                                             {
-                                                Console.WriteLine(Bibliotek.RentBog(choice - 1, days, choice2 -1));
+                                                Console.WriteLine(Bibliotek.RentBog(choice - 1, days, Bibliotek.Kunder[choice2 -1]));
                                                 Console.ReadLine();
                                                 break;
                                             }

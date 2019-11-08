@@ -6,7 +6,6 @@ namespace Biblioteksobjekt
         public string title;
         public bool isRented;
         public Kunder rentedBy;
-        public int rentedById;
         public int dueDate;
 
         public Bog(string title)
