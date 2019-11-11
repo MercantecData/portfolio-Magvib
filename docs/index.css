@@ -35,7 +35,7 @@ body{
     justify-content: center;
     text-align: center;
 }
-#leftText{
+.leftText{
     margin-top: 50vh;
     font-size: 72px;
     color: #F57F17;

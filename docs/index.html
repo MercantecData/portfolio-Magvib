@@ -13,13 +13,31 @@
 <body>
     <div class="flex-container">
         <div id="left">
-            <div id="leftText">
+            <div class="leftText">
                 <p id="name">Magnus Bjørn Nielsen</p>
                 <a href="https://github.com/MercantecData/portfolio-Magvib">Github</a>
                 <br>
                 <a href="https://www.mercantec.dk">Mercantec</a>
                 <br>
                 <a href="https://rito.dk/">Rito</a>
+                <br>
+                <a id="om" href="">Projects</a>
+            </div>
+            <div id="hidden" class="leftText">
+                <p>Magnus Bjørn Nielsen</p>
+                <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CC">CC</a>
+                |
+                <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CCMobile">CCMobile</a>
+                |
+                <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CCServer">CCServer</a>
+                |
+                <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/BiblioteksProject">BiblioteksProject</a>
+                |
+                <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Guess">Guess</a>
+                |
+                <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Magic8Ball">Magic8Ball</a>
+                |
+                <a id="om" href="">Portfolio</a>
             </div>
         </div>
         <div id="rightPic"></div>
@@ -28,13 +46,20 @@
 <script>
     var animation = true;
     var animation2 = false;
-    $("#leftText").hide();
-    $("#leftText").fadeIn(4000, function () {});
+    $("#hidden").hide();
+    $("div.leftText:first").hide();
+    $("div.leftText:first").fadeIn(4000, function () {});
     $("#left").hover(function () {
-        // over
         animationFunc();
     }, function () {
         animationFunc2();
+    });
+
+    $("#om").click(function (e) {
+        e.preventDefault();
+        $("div.leftText:first").fadeOut(1000, function () {
+            $("#hidden").fadeIn(1000);
+        });
     });
 
     function animationFunc() {
@@ -43,12 +68,11 @@
             $("#rightPic").animate({
                 opacity: 0.25,
                 height: "toggle"
-            }, 1500, function () {
-                // $("#rightPic").hide();
+            }, 1000, function () {
                 animation = false;
                 $("#left").animate({
                     width: "90%"
-                }, 1500, function () {
+                }, 1000, function () {
                     animation = false;
                     animation2 = true;
                 });
@@ -61,12 +85,12 @@
             animation2 = false;
             $("#left").animate({
                 width: "50%"
-            }, 1500, function () {
+            }, 1000, function () {
                 animation2 = false;
                 $("#rightPic").animate({
                     opacity: 1,
                     height: "toggle"
-                }, 1500, function () {
+                }, 1000, function () {
                     animation = true;
                 });
             });
