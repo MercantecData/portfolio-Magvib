@@ -26,31 +26,53 @@
     </div>
 </body>
 <script>
+    var animation = true;
+    var animation2 = false;
     $("#leftText").hide();
     $("#leftText").fadeIn(4000, function () {});
     $("#left").hover(function () {
         // over
-        $("#rightPic").animate({
-            opacity: 0.25,
-            height: "toggle"
-        }, 2000, function () {
-            // $("#rightPic").hide();
-            $("#left").animate({
-                width: "90%"
-            }, 2000, function () {});
-        });
+        animationFunc();
     }, function () {
-        // out
-        $("#left").animate({
-            width: "50%"
-        }, 2000, function () {
-            $("#rightPic").animate({
-                opacity: 1,
-                height: "toggle"
-            }, 2000, function () {});
-        });
-
+        animationFunc2();
     });
+
+    function animationFunc() {
+        if (animation) {
+            animation = false;
+            $("#rightPic").animate({
+                opacity: 0.25,
+                height: "toggle"
+            }, 1500, function () {
+                // $("#rightPic").hide();
+                animation = false;
+                $("#left").animate({
+                    width: "90%"
+                }, 1500, function () {
+                    animation = false;
+                    animation2 = true;
+                });
+            });
+        }
+    }
+
+    function animationFunc2() {
+        if (animation2) {
+            animation2 = false;
+            $("#left").animate({
+                width: "50%"
+            }, 1500, function () {
+                animation2 = false;
+                $("#rightPic").animate({
+                    opacity: 1,
+                    height: "toggle"
+                }, 1500, function () {
+                    animation = true;
+                });
+            });
+        }
+
+    }
 </script>
 
 </html>
