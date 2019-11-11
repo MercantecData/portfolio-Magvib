@@ -37,7 +37,7 @@ body{
 }
 .leftText{
     margin-top: 50vh;
-    font-size: 72px;
+    /* font-size: 72px; */
     color: #F57F17;
     transform: translate(0%, -50%);
 }
