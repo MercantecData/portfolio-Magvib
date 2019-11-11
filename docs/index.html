@@ -33,15 +33,23 @@
         $("#rightPic").animate({
             opacity: 0.25,
             height: "toggle"
-        }, 2000, function () {});
-        // $("#rightPic").fadeToggle("background-image");
+        }, 2000, function () {
+            // $("#rightPic").hide();
+            $("#left").animate({
+                width: "90%"
+            }, 2000, function () {});
+        });
     }, function () {
         // out
-        $("#rightPic").animate({
-            opacity: 1,
-            height: "toggle"
-        }, 2000, function () {});
-        // $("#rightPic").fadeToggle("background-image");
+        $("#left").animate({
+            width: "50%"
+        }, 2000, function () {
+            $("#rightPic").animate({
+                opacity: 1,
+                height: "toggle"
+            }, 2000, function () {});
+        });
+
     });
 </script>
 
