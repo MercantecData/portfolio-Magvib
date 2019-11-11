@@ -13,7 +13,7 @@
 <body>
     <div class="flex-container">
         <div id="left">
-            <div class="leftText">
+            <div id="Projects" class="leftText">
                 <p id="name">Magnus Bjørn Nielsen</p>
                 <a href="https://github.com/MercantecData/portfolio-Magvib">Github</a>
                 <br>
@@ -37,7 +37,7 @@
                 |
                 <a href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Magic8Ball">Magic8Ball</a>
                 |
-                <a id="om" href="">Portfolio</a>
+                <a id="om2" href="">Portfolio</a>
             </div>
         </div>
         <div id="rightPic"></div>
@@ -47,8 +47,8 @@
     var animation = true;
     var animation2 = false;
     $("#hidden").hide();
-    $("div.leftText:first").hide();
-    $("div.leftText:first").fadeIn(4000, function () {});
+    $("#Projects").hide();
+    $("#Projects").fadeIn(4000, function () {});
     $("#left").hover(function () {
         animationFunc();
     }, function () {
@@ -57,8 +57,15 @@
 
     $("#om").click(function (e) {
         e.preventDefault();
-        $("div.leftText:first").fadeOut(1000, function () {
+        $("#Projects").fadeOut(1000, function () {
             $("#hidden").fadeIn(1000);
+        });
+    });
+
+    $("#om2").click(function (e) {
+        e.preventDefault();
+        $("#hidden").fadeOut(1000, function () {
+            $("#Projects").fadeIn(1000);
         });
     });
 
