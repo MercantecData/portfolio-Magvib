@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <meta charset="UTF-8">
@@ -23,5 +25,24 @@
         <div id="rightPic"></div>
     </div>
 </body>
+<script>
+    $("#leftText").hide();
+    $("#leftText").fadeIn(4000, function () {});
+    $("#left").hover(function () {
+        // over
+        $("#rightPic").animate({
+            opacity: 0.25,
+            height: "toggle"
+        }, 2000, function () {});
+        // $("#rightPic").fadeToggle("background-image");
+    }, function () {
+        // out
+        $("#rightPic").animate({
+            opacity: 1,
+            height: "toggle"
+        }, 2000, function () {});
+        // $("#rightPic").fadeToggle("background-image");
+    });
+</script>
 
 </html>
