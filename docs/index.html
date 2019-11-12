@@ -82,6 +82,7 @@
     var index = 0;
     $("#name").click(function (e) {
         e.preventDefault();
+        $("#name").text("Easter Egg");
         setInterval(function () {
             $('.leftText').animate({
                 color: colors[index]
@@ -105,7 +106,7 @@
             }, 1000, function () {
                 animation = false;
                 $("#left").animate({
-                    width: "90%"
+                    width: "95%"
                 }, 1000, function () {
                     animation = false;
                     animation2 = true;
