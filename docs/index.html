@@ -4,6 +4,9 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <meta charset="UTF-8">
@@ -25,17 +28,23 @@
             </div>
             <div id="hidden" class="leftText">
                 <p style="font-size: 72px;">Magnus Bjørn Nielsen</p>
-                <a style="font-size: 40px;" href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CC">CC</a>
+                <a style="font-size: 40px;"
+                    href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CC">CC</a>
                 <br>
-                <a style="font-size: 40px;" href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CCMobile">CCMobile</a>
+                <a style="font-size: 40px;"
+                    href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CCMobile">CCMobile</a>
                 <br>
-                <a style="font-size: 40px;" href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CCServer">CCServer</a>
+                <a style="font-size: 40px;"
+                    href="https://github.com/MercantecData/portfolio-Magvib/tree/master/CCServer">CCServer</a>
                 <br>
-                <a style="font-size: 40px;" href="https://github.com/MercantecData/portfolio-Magvib/tree/master/BiblioteksProject">BiblioteksProject</a>
+                <a style="font-size: 40px;"
+                    href="https://github.com/MercantecData/portfolio-Magvib/tree/master/BiblioteksProject">BiblioteksProject</a>
                 <br>
-                <a style="font-size: 40px;" href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Guess">Guess</a>
+                <a style="font-size: 40px;"
+                    href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Guess">Guess</a>
                 <br>
-                <a style="font-size: 40px;" href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Magic8Ball">Magic8Ball</a>
+                <a style="font-size: 40px;"
+                    href="https://github.com/MercantecData/portfolio-Magvib/tree/master/Magic8Ball">Magic8Ball</a>
                 <br>
                 <a style="font-size: 40px;" id="om2" href="">Portfolio</a>
             </div>
@@ -68,6 +77,23 @@
             $("#Projects").fadeIn(1000);
         });
     });
+
+    var colors = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
+    var index = 0;
+    $("#name").click(function (e) {
+        e.preventDefault();
+        setInterval(function () {
+            $('.leftText').animate({
+                color: colors[index]
+            }, 1000);
+            if (!colors[index]) {
+                index = 0;
+            } else {
+                index++;
+            }
+        }, 1000);
+    });
+
 
     function animationFunc() {
         if (animation) {
