@@ -6,14 +6,9 @@ namespace Ebay
 {
     class User
     {
-        int id;
-        string name;
-        string password;
-
-        public string GetName()
-        {
-            return name;
-        }
+        public int id;
+        public string name;
+        private string password;
 
         public User(int id, string name, string password)
         {
@@ -29,7 +24,6 @@ namespace Ebay
 
         public void AddUser(int id, string name, string password)
         {
-            User user = new User(id, name, password);
             users.Add(new User(id, name, password));
         }
 
@@ -37,7 +31,7 @@ namespace Ebay
         {
             for (int i = 0; i < users.Count; i++)
             {
-                Console.WriteLine(users[i].GetName());
+                Console.WriteLine("{0}. {1}", users[i].id, users[i].name);
             }
         }
     }
@@ -46,6 +40,9 @@ namespace Ebay
     {
         static void Main(string[] args)
         {
+            Database test = new Database();
+            // new MySqlCommand("UPDATE users SET name = 'Magnus' WHERE id = 1", con).ExecuteScalar();
+
             string cs = @"server=localhost;userid=root;password=toor;database=csharp";
             using var con = new MySqlConnection(cs);
             con.Open();
@@ -53,15 +50,11 @@ namespace Ebay
             string userString = "SELECT * FROM users";
             using var cmd = new MySqlCommand(userString, con);
 
-            // new MySqlCommand("UPDATE users SET name = 'Magnus' WHERE id = 1", con).ExecuteScalar();
-            Database test = new Database();
-
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
                 test.AddUser(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2));
-                // Console.WriteLine("{0}. {1}", rdr.GetInt32(0), rdr.GetString(1));
             }
             test.ListUsers();
 
