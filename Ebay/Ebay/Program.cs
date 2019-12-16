@@ -38,6 +38,8 @@ namespace Ebay
                 test.ListProducts();
             }
 
+            Console.WriteLine(test.CheckPassword(1, "toor"));
+
             Console.ReadLine();
         }
     }

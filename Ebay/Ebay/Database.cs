@@ -29,6 +29,11 @@ namespace Ebay
             }
         }
 
+        public bool CheckPassword(int id, string password)
+        {
+            return users[id].CheckPassword(password);
+        }
+
 
         // Products
         public void AddProduct(int id, string name, int price)

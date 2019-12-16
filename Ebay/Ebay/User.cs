@@ -7,7 +7,7 @@ namespace Ebay
         public string name;
         private string password;
 
-        public bool PasswordChecker(string P)
+        public bool CheckPassword(string P)
         {
             if (P == password)
             {
