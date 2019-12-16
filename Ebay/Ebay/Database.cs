@@ -7,6 +7,7 @@ namespace Ebay
     public class Database
     {
         List<User> users = new List<User>();
+        List<Product> products = new List<Product>();
 
         public void AddUser(int id, string name, string password)
         {
@@ -23,6 +24,24 @@ namespace Ebay
             for (int i = 0; i < users.Count; i++)
             {
                 Console.WriteLine("{0}. {1}", users[i].id, users[i].name);
+            }
+        }
+
+        public void AddProduct(int id, string name, int price)
+        {
+            products.Add(new Product(id, name, price));
+        }
+
+        public void ClearProducts()
+        {
+            products.Clear();
+        }
+
+        public void ListProducts()
+        {
+            for (int i = 0; i < products.Count; i++)
+            {
+                Console.WriteLine("{0}. {1} : {2} dk", products[i].id, products[i].name, products[i].price);
             }
         }
     }

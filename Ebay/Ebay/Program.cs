@@ -17,16 +17,26 @@ namespace Ebay
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string userString = "SELECT * FROM users";
-            using var cmd = new MySqlCommand(userString, con);
-
-
-            using MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
+            using var cmd = new MySqlCommand("SELECT * FROM users", con);
+            using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
-                test.AddUser(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2));
+                while (rdr.Read())
+                {
+                    test.AddUser(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2));
+                }
+                test.ListUsers();
             }
-            test.ListUsers();
+
+            using var cmd2 = new MySqlCommand("SELECT * FROM products", con);
+            using (MySqlDataReader rdr2 = cmd2.ExecuteReader())
+            {
+                while (rdr2.Read())
+                {
+                    test.AddProduct(rdr2.GetInt32(0), rdr2.GetString(1), rdr2.GetInt32(2));
+                }
+                Console.WriteLine("");
+                test.ListProducts();
+            }
 
             Console.ReadLine();
         }
