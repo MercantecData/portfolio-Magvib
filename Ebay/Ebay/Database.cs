@@ -9,6 +9,8 @@ namespace Ebay
         List<User> users = new List<User>();
         List<Product> products = new List<Product>();
 
+
+        // Users
         public void AddUser(int id, string name, string password)
         {
             users.Add(new User(id, name, password));
@@ -27,6 +29,8 @@ namespace Ebay
             }
         }
 
+
+        // Products
         public void AddProduct(int id, string name, int price)
         {
             products.Add(new Product(id, name, price));
