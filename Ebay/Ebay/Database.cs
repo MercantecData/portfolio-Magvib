@@ -63,5 +63,10 @@ namespace Ebay
                 Console.WriteLine("{0}. {1} : {2} dk", products[i].id, products[i].name, products[i].price);
             }
         }
+
+        public Product ProductID(int id)
+        {
+            return products[id];
+        }
     }
 }
