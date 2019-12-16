@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace Ebay
 {
-    class Users
+    class User
     {
         int id;
         string name;
         string password;
 
-        public Users(int id, string name, string password)
+        public string GetName()
+        {
+            return name;
+        }
+
+        public User(int id, string name, string password)
         {
             this.id = id;
             this.name = name;
@@ -19,11 +25,20 @@ namespace Ebay
 
     class Database
     {
-        Users user;
+        List<User> users = new List<User>();
 
-        public Database(Users user)
+        public void AddUser(int id, string name, string password)
         {
-            this.user = user;
+            User user = new User(id, name, password);
+            users.Add(new User(id, name, password));
+        }
+
+        public void ListUsers()
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                Console.WriteLine(users[i].GetName());
+            }
         }
     }
 
@@ -35,17 +50,20 @@ namespace Ebay
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string sql = "SELECT id, name FROM users";
-            using var cmd = new MySqlCommand(sql, con);
+            string userString = "SELECT * FROM users";
+            using var cmd = new MySqlCommand(userString, con);
 
             // new MySqlCommand("UPDATE users SET name = 'Magnus' WHERE id = 1", con).ExecuteScalar();
+            Database test = new Database();
+
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
-
             while (rdr.Read())
             {
-                Console.WriteLine("{0}. {1}", rdr.GetInt32(0), rdr.GetString(1));
+                test.AddUser(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2));
+                // Console.WriteLine("{0}. {1}", rdr.GetInt32(0), rdr.GetString(1));
             }
+            test.ListUsers();
 
             Console.ReadLine();
         }
