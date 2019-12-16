@@ -7,6 +7,18 @@ namespace Ebay
         public string name;
         private string password;
 
+        public bool PasswordChecker(string P)
+        {
+            if (P == password)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public User(int id, string name, string password)
         {
             this.id = id;
