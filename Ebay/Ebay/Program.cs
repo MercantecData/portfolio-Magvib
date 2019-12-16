@@ -68,9 +68,13 @@ namespace Ebay
             }
         }
 
-        public static void Login(Database test, int id)
+        public static void Login(Database test, int id, int checker = 0)
         {
             Console.Clear();
+            if (checker == 1)
+            {
+                Console.WriteLine("Worng Password Try Again");
+            }
             Console.WriteLine("Username: {0}", test.UserID(id).name);
             Console.Write("Password: ");
             var pass = Console.ReadLine();
@@ -78,13 +82,15 @@ namespace Ebay
             {
                 Menu(test, id);
             }
+            else
+            {
+                Login(test, id, 1);
+            }
         }
 
         public static void Menu(Database test, int id)
         {
             Console.Clear();
-            string s = "Welcome " + test.UserID(id).name + ", to Mini Ebay";
-            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
             Console.WriteLine("Welcome {0}, to Mini Ebay", test.UserID(id).name);
             Console.ReadLine();
         }
