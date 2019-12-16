@@ -13,6 +13,7 @@ namespace Ebay
     {
         static void Main(string[] args)
         {
+            Console.Title = "Mini Ebay";
             Database test = new Database();
             string cs = @"server=localhost;userid=root;password=;database=csharp";
             using var con = new MySqlConnection(cs);
@@ -41,18 +42,27 @@ namespace Ebay
 
         public static void Users(Database test)
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             for (int id = 0; id < test.UserCount(); id++)
             {
                 Console.WriteLine("{0}. {1}", test.UserID(id).id, test.UserID(id).name);
             }
             Console.Write("Choice: ");
-            int choice = Int32.Parse(Console.ReadLine());
-            choice--;
-            if (choice < test.UserCount() && choice > -1)
+            try
             {
-                Login(test, choice);
+                int choice = Int32.Parse(Console.ReadLine());
+                choice--;
+                if (choice < test.UserCount() && choice > -1)
+                {
+                    Login(test, choice);
+                }
+                else
+                {
+                    Users(test);
+                }
             }
-            else
+            catch (Exception)
             {
                 Users(test);
             }
@@ -60,6 +70,7 @@ namespace Ebay
 
         public static void Login(Database test, int id)
         {
+            Console.Clear();
             Console.WriteLine("Username: {0}", test.UserID(id).name);
             Console.Write("Password: ");
             var pass = Console.ReadLine();
@@ -71,7 +82,10 @@ namespace Ebay
 
         public static void Menu(Database test, int id)
         {
-            Console.WriteLine("Welcome {0} to Mini Ebay", test.UserID(id).name);
+            Console.Clear();
+            string s = "Welcome " + test.UserID(id).name + ", to Mini Ebay";
+            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+            Console.WriteLine("Welcome {0}, to Mini Ebay", test.UserID(id).name);
             Console.ReadLine();
         }
     }
