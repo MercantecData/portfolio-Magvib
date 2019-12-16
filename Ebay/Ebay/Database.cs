@@ -34,6 +34,16 @@ namespace Ebay
             return users[id].CheckPassword(password);
         }
 
+        public int UserCount()
+        {
+            return users.Count;
+        }
+
+        public User UserID(int id)
+        {
+            return users[id];
+        }
+
 
         // Products
         public void AddProduct(int id, string name, int price)

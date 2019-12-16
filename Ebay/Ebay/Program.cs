@@ -4,6 +4,8 @@ using MySql.Data.MySqlClient;
 
 // Execute Command
 // new MySqlCommand("UPDATE users SET name = 'Magnus' WHERE id = 1", con).ExecuteScalar();
+// Check Password
+// Console.WriteLine(test.CheckPassword(0, "toor"));
 
 namespace Ebay
 {
@@ -12,8 +14,7 @@ namespace Ebay
         static void Main(string[] args)
         {
             Database test = new Database();
-
-            string cs = @"server=localhost;userid=root;password=toor;database=csharp";
+            string cs = @"server=localhost;userid=root;password=;database=csharp";
             using var con = new MySqlConnection(cs);
             con.Open();
 
@@ -24,7 +25,6 @@ namespace Ebay
                 {
                     test.AddUser(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2));
                 }
-                test.ListUsers();
             }
 
             using var cmd2 = new MySqlCommand("SELECT * FROM products", con);
@@ -34,12 +34,44 @@ namespace Ebay
                 {
                     test.AddProduct(rdr2.GetInt32(0), rdr2.GetString(1), rdr2.GetInt32(2));
                 }
-                Console.WriteLine("");
-                test.ListProducts();
             }
 
-            Console.WriteLine(test.CheckPassword(1, "toor"));
+            Users(test);
+        }
 
+        public static void Users(Database test)
+        {
+            for (int id = 0; id < test.UserCount(); id++)
+            {
+                Console.WriteLine("{0}. {1}", test.UserID(id).id, test.UserID(id).name);
+            }
+            Console.Write("Choice: ");
+            int choice = Int32.Parse(Console.ReadLine());
+            choice--;
+            if (choice < test.UserCount() && choice > -1)
+            {
+                Login(test, choice);
+            }
+            else
+            {
+                Users(test);
+            }
+        }
+
+        public static void Login(Database test, int id)
+        {
+            Console.WriteLine("Username: {0}", test.UserID(id).name);
+            Console.Write("Password: ");
+            var pass = Console.ReadLine();
+            if (test.CheckPassword(id, pass) == true)
+            {
+                Menu(test, id);
+            }
+        }
+
+        public static void Menu(Database test, int id)
+        {
+            Console.WriteLine("Welcome {0} to Mini Ebay", test.UserID(id).name);
             Console.ReadLine();
         }
     }
