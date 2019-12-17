@@ -11,14 +11,9 @@ namespace Ebay
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void CollectUsers(MySqlConnection con, Database test)
         {
-            Console.Title = "Mini Ebay";
-            Database test = new Database();
-            string cs = @"server=localhost;userid=root;password=;database=csharp";
-            using var con = new MySqlConnection(cs);
-            con.Open();
-
+            test.ClearUsers();
             using var cmd = new MySqlCommand("SELECT * FROM users", con);
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
@@ -27,7 +22,11 @@ namespace Ebay
                     test.AddUser(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2));
                 }
             }
+        }
 
+        public static void CollectProducts(MySqlConnection con, Database test)
+        {
+            test.ClearProducts();
             using var cmd2 = new MySqlCommand("SELECT * FROM products", con);
             using (MySqlDataReader rdr2 = cmd2.ExecuteReader())
             {
@@ -36,7 +35,18 @@ namespace Ebay
                     test.AddProduct(rdr2.GetInt32(0), rdr2.GetString(1), rdr2.GetInt32(2));
                 }
             }
+        }
 
+        static void Main(string[] args)
+        {
+            Console.Title = "Mini Ebay";
+            Database test = new Database();
+            string cs = @"server=localhost;userid=root;password=toor;database=csharp";
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            CollectUsers(con, test);
+            CollectProducts(con, test);
             Users(test);
         }
 
