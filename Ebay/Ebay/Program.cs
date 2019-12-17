@@ -27,12 +27,32 @@ namespace Ebay
         public static void CollectProducts(MySqlConnection con, Database test)
         {
             test.ClearProducts();
-            using var cmd2 = new MySqlCommand("SELECT * FROM products", con);
-            using (MySqlDataReader rdr2 = cmd2.ExecuteReader())
+            using var cmd = new MySqlCommand("SELECT * FROM products", con);
+            using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
-                while (rdr2.Read())
+                while (rdr.Read())
                 {
-                    test.AddProduct(rdr2.GetInt32(0), rdr2.GetString(1), rdr2.GetInt32(2));
+                    test.AddProduct(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2));
+                }
+            }
+        }
+
+        public static void CollectOrders(MySqlConnection con, Database test)
+        {
+            test.ClearOrders();
+            using var cmd = new MySqlCommand("SELECT id, (SELECT users.name FROM users WHERE users.id = orders.seller_id) AS seller_name, (SELECT products.name FROM products WHERE products.id = orders.product_id) AS product_name, (SELECT users.name FROM users WHERE users.id = orders.buyer_id) as buyer_name FROM orders WHERE 1", con);
+            using (MySqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    try
+                    {
+                        test.AddOrder(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3));
+                    }
+                    catch (Exception)
+                    {
+                        test.AddOrder(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), "null");
+                    }
                 }
             }
         }
@@ -47,6 +67,7 @@ namespace Ebay
 
             CollectUsers(con, test);
             CollectProducts(con, test);
+            CollectOrders(con, test);
             Users(test);
         }
 
@@ -102,6 +123,7 @@ namespace Ebay
         {
             Console.Clear();
             Console.WriteLine("Welcome {0}, to Mini Ebay", test.UserID(id).name);
+            test.ListOrdersWithID(test.UserID(id).name);
             Console.ReadLine();
         }
     }

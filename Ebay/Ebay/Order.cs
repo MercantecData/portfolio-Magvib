@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Ebay
 {
-    class Order
+    public class Order
     {
-        int id;
-        int seller_id;
-        int product_id;
-        int buyer_id;
+        public int id;
+        public string seller_name;
+        public string product_name;
+        public string buyer_name;
 
-        public Order(int id, int seller_id, int product_id, int buyer_id)
+        public Order(int id, string seller_name, string product_name, string buyer_name)
         {
             this.id = id;
-            this.seller_id = seller_id;
-            this.product_id = product_id;
-            this.buyer_id = buyer_id;
+            this.seller_name = seller_name;
+            this.product_name = product_name;
+            this.buyer_name = buyer_name;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Ebay
     {
         List<User> users = new List<User>();
         List<Product> products = new List<Product>();
-
+        List<Order> orders = new List<Order>();
 
         // Users
         public void AddUser(int id, string name, string password)
@@ -67,6 +67,42 @@ namespace Ebay
         public Product ProductID(int id)
         {
             return products[id];
+        }
+
+
+        // Orders
+        public void AddOrder(int id, string seller_name, string product_name, string buyer_name)
+        {
+            orders.Add(new Order(id, seller_name, product_name, buyer_name));
+        }
+
+        public void ClearOrders()
+        {
+            orders.Clear();
+        }
+
+        public void ListOrders()
+        {
+            for (int i = 0; i < orders.Count; i++)
+            {
+                Console.WriteLine("{0} : {1} : {2} : {3}", orders[i].id, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
+            }
+        }
+
+        public void ListOrdersWithID(string name)
+        {
+            for (int i = 0; i < orders.Count; i++)
+            {
+                if (orders[i].seller_name == name)
+                {
+                    Console.WriteLine("{0} : {1} : {2} : {3}", orders[i].id, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
+                }
+            }
+        }
+
+        public Order OrderID(int id)
+        {
+            return orders[id];
         }
     }
 }
