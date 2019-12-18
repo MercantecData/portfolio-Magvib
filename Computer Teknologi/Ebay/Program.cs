@@ -230,7 +230,10 @@ namespace Ebay
                             test.ListAvailableOrders();
                             Console.Write("\r\nSelect a product to buy: ");
                             int bproduct = Convert.ToInt32(Console.ReadLine());
-                            test.BuyProduct(con, test, id, bproduct);
+                            if (bproduct < test.OrderCount() || bproduct >= 0)
+                            {
+                                new MySqlCommand("UPDATE orders SET buyer_id = '" + test.UserID(id).id + "' WHERE id = " + test.OrderID(bproduct).id + "", con).ExecuteScalar();
+                            }
                             CollectOrders(con, test);
                         }
                         catch (Exception)
