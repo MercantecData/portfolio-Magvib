@@ -68,23 +68,97 @@ namespace Ebay
             CollectUsers(con, test);
             CollectProducts(con, test);
             CollectOrders(con, test);
-            Users(test);
+            Start(con, test);
+        }
+
+        public static void Start(MySqlConnection con, Database test)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1) Create User");
+                Console.WriteLine("2) Login");
+                Console.WriteLine("3) Exit");
+                Console.Write("\r\nSelect an option: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        CreateUser(con, test);
+                        break;
+                    case "2":
+                        Users(test);
+                        break;
+                    case "3":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public static void CreateUser(MySqlConnection con, Database test, int checker = 0)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            bool allow = false;
+            if (checker == 1)
+            {
+                Console.WriteLine("Username already taken");
+            }
+            else if (checker == 2)
+            {
+                Console.WriteLine("Password doesn't match");
+            }
+            Console.Write("Username: ");
+            var user = Console.ReadLine();
+            Console.Write("Password: ");
+            var pass = Console.ReadLine();
+            Console.Write("Confirm Password: ");
+            var confirmpass = Console.ReadLine();
+            for (int i = 0; i < test.UserCount(); i++)
+            {
+                if (user == test.UserID(i).name)
+                {
+                    CreateUser(con, test, 1);
+                }
+                else if (pass != confirmpass)
+                {
+                    CreateUser(con, test, 2);
+                }
+                else
+                {
+                    allow = true;
+                    
+                }
+            }
+            if (allow == true)
+            {
+                new MySqlCommand("INSERT INTO users (name, password) VALUES ('" + user + "', '" + pass + "');", con).ExecuteScalar();
+                CollectUsers(con, test);
+                Console.Clear();
+                Console.WriteLine("User Created");
+                Console.ReadLine();
+            }
+
         }
 
         public static void Users(Database test)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            for (int id = 0; id < test.UserCount(); id++)
-            {
-                Console.WriteLine("{0}. {1}", test.UserID(id).id, test.UserID(id).name);
-            }
-            Console.Write("Choice: ");
+            Console.WriteLine("Choose a user:");
+            test.ListUsers();
+            Console.Write("\r\nSelect a user: ");
+
             try
             {
                 int choice = Int32.Parse(Console.ReadLine());
                 choice--;
-                if (choice < test.UserCount() && choice > -1)
+                if (choice < test.UserCount() && choice >= -1)
                 {
                     Login(test, choice);
                 }

@@ -25,7 +25,7 @@ namespace Ebay
         {
             for (int i = 0; i < users.Count; i++)
             {
-                Console.WriteLine("{0}. {1}", users[i].id, users[i].name);
+                Console.WriteLine("{0}) {1}", i+1, users[i].name);
             }
         }
 
