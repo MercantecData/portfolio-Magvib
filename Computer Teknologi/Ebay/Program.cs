@@ -89,7 +89,7 @@ namespace Ebay
                         CreateUser(con, test);
                         break;
                     case "2":
-                        Users(test);
+                        Users(con, test);
                         break;
                     case "3":
                         Environment.Exit(0);
@@ -108,10 +108,14 @@ namespace Ebay
             if (checker == 1)
             {
                 Console.WriteLine("Username already taken");
+                Console.ReadLine();
+                Start(con, test);
             }
             else if (checker == 2)
             {
                 Console.WriteLine("Password doesn't match");
+                Console.ReadLine();
+                Start(con, test);
             }
             Console.Write("Username: ");
             var user = Console.ReadLine();
@@ -142,54 +146,66 @@ namespace Ebay
                 Console.Clear();
                 Console.WriteLine("User Created");
                 Console.ReadLine();
+                Start(con, test);
             }
 
         }
 
-        public static void Users(Database test)
+        public static void Users(MySqlConnection con, Database test)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Choose a user:");
             test.ListUsers();
+            Console.WriteLine("x) Main Menu");
             Console.Write("\r\nSelect a user: ");
 
             try
             {
-                int choice = Int32.Parse(Console.ReadLine());
+                var choiceX = Console.ReadLine();
+                if (choiceX == "x")
+                {
+                    Start(con, test);
+                }
+                int choice = Int32.Parse(choiceX);
                 choice--;
                 if (choice < test.UserCount() && choice >= -1)
                 {
-                    Login(test, choice);
+                    Login(con, test, choice);
                 }
                 else
                 {
-                    Users(test);
+                    Users(con, test);
                 }
             }
             catch (Exception)
             {
-                Users(test);
+                Users(con, test);
             }
         }
 
-        public static void Login(Database test, int id, int checker = 0)
+        public static void Login(MySqlConnection con, Database test, int id, int checker = 0)
         {
             Console.Clear();
             if (checker == 1)
             {
                 Console.WriteLine("Worng Password Try Again");
             }
+            Console.WriteLine("Press X to main menu");
             Console.WriteLine("Username: {0}", test.UserID(id).name);
             Console.Write("Password: ");
             var pass = Console.ReadLine();
+            if (pass == "x")
+            {
+                Start(con, test);
+            }
             if (test.CheckPassword(id, pass) == true)
             {
                 Menu(test, id);
             }
             else
             {
-                Login(test, id, 1);
+                Login(con, test, id, 1);
             }
         }
 
