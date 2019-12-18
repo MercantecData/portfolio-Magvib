@@ -4,8 +4,6 @@ using MySql.Data.MySqlClient;
 
 // Execute Command
 // new MySqlCommand("UPDATE users SET name = 'Magnus' WHERE id = 1", con).ExecuteScalar();
-// Check Password
-// Console.WriteLine(test.CheckPassword(0, "toor"));
 
 namespace Ebay
 {
@@ -61,7 +59,7 @@ namespace Ebay
         {
             Console.Title = "Mini Ebay";
             Database test = new Database();
-            string cs = @"server=localhost;userid=root;password=toor;database=csharp";
+            string cs = @"server=localhost;userid=root;password=;database=csharp";
             using var con = new MySqlConnection(cs);
             con.Open();
 
@@ -77,6 +75,7 @@ namespace Ebay
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1) Create User");
                 Console.WriteLine("2) Login");
@@ -104,6 +103,7 @@ namespace Ebay
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
             bool allow = false;
             if (checker == 1)
             {
@@ -155,6 +155,7 @@ namespace Ebay
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
             Console.WriteLine("Choose a user:");
             test.ListUsers();
             Console.WriteLine("x) Main Menu");
@@ -187,6 +188,8 @@ namespace Ebay
         public static void Login(MySqlConnection con, Database test, int id, int checker = 0)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
             if (checker == 1)
             {
                 Console.WriteLine("Worng Password Try Again");
@@ -206,34 +209,40 @@ namespace Ebay
 
         public static void Menu(Database test, int id)
         {
-            Console.Clear();
-            Console.WriteLine("Welcome {0}, to Mini Ebay", test.UserID(id).name);
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) Buy product");
-            Console.WriteLine("2) Sell product");
-            Console.WriteLine("3) Delete product");
-            Console.WriteLine("4) Exit");
-            Console.Write("\r\nSelect an option: ");
-
-            switch (Console.ReadLine())
+            while (true)
             {
-                case "1":
-                    test.ListAvailableOrders();
-                    Console.ReadLine();
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    test.ListOrdersWithID(test.UserID(id).id);
-                    break;
-                case "4":
-                    Environment.Exit(0);
-                    break;
-                default:
-                    break;
-            }
+                Console.Clear();
+                Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
+                // Console.WriteLine("Welcome {0}, to Mini Ebay", test.UserID(id).name);
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1) Buy product");
+                Console.WriteLine("2) Sell product");
+                Console.WriteLine("3) Delete product");
+                Console.WriteLine("4) Bought products");
+                Console.WriteLine("5) Exit");
+                Console.Write("\r\nSelect an option: ");
 
-            Console.ReadLine();
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        test.ListAvailableOrders();
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        test.ListOrdersWithID(test.UserID(id).id);
+                        Console.ReadLine();
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
