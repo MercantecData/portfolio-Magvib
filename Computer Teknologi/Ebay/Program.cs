@@ -208,7 +208,31 @@ namespace Ebay
         {
             Console.Clear();
             Console.WriteLine("Welcome {0}, to Mini Ebay", test.UserID(id).name);
-            test.ListOrdersWithID(test.UserID(id).name);
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Buy product");
+            Console.WriteLine("2) Sell product");
+            Console.WriteLine("3) Delete product");
+            Console.WriteLine("4) Exit");
+            Console.Write("\r\nSelect an option: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    test.ListAvailableOrders();
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    test.ListOrdersWithID(test.UserID(id).id);
+                    break;
+                case "4":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    break;
+            }
+
             Console.ReadLine();
         }
     }

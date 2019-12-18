@@ -85,17 +85,28 @@ namespace Ebay
         {
             for (int i = 0; i < orders.Count; i++)
             {
-                Console.WriteLine("{0} : {1} : {2} : {3}", orders[i].id, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
+                Console.WriteLine("{0} : {1} : {2} : {3}", i, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
             }
         }
 
-        public void ListOrdersWithID(string name)
+        public void ListAvailableOrders()
         {
             for (int i = 0; i < orders.Count; i++)
             {
-                if (orders[i].seller_name == name)
+                if (orders[i].buyer_id == 0)
                 {
-                    Console.WriteLine("{0} : {1} : {2} : {3} : {4} : {5} : {6}", orders[i].id, orders[i].seller_id, orders[i].product_id, orders[i].buyer_id, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
+                    Console.WriteLine("{0}) {1} is selling: {2}", i, orders[i].seller_name, orders[i].product_name);
+                }
+            }
+        }
+
+        public void ListOrdersWithID(int id)
+        {
+            for (int i = 0; i < orders.Count; i++)
+            {
+                if (orders[i].seller_id == id)
+                {
+                    Console.WriteLine("{0}) {1} : sold by : {2}", i, orders[i].product_name, orders[i].seller_name);
                 }
             }
         }
