@@ -71,9 +71,9 @@ namespace Ebay
 
 
         // Orders
-        public void AddOrder(int id, string seller_name, string product_name, string buyer_name)
+        public void AddOrder(int id, int seller_id, int product_id, int buyer_id, string seller_name, string product_name, string buyer_name)
         {
-            orders.Add(new Order(id, seller_name, product_name, buyer_name));
+            orders.Add(new Order(id, seller_id, product_id, buyer_id, seller_name, product_name, buyer_name));
         }
 
         public void ClearOrders()
@@ -95,7 +95,7 @@ namespace Ebay
             {
                 if (orders[i].seller_name == name)
                 {
-                    Console.WriteLine("{0} : {1} : {2} : {3}", orders[i].id, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
+                    Console.WriteLine("{0} : {1} : {2} : {3} : {4} : {5} : {6}", orders[i].id, orders[i].seller_id, orders[i].product_id, orders[i].buyer_id, orders[i].seller_name, orders[i].product_name, orders[i].buyer_name);
                 }
             }
         }

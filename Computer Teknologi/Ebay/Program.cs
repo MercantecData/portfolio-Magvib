@@ -40,18 +40,18 @@ namespace Ebay
         public static void CollectOrders(MySqlConnection con, Database test)
         {
             test.ClearOrders();
-            using var cmd = new MySqlCommand("SELECT id, (SELECT users.name FROM users WHERE users.id = orders.seller_id) AS seller_name, (SELECT products.name FROM products WHERE products.id = orders.product_id) AS product_name, (SELECT users.name FROM users WHERE users.id = orders.buyer_id) as buyer_name FROM orders WHERE 1", con);
+            using var cmd = new MySqlCommand("SELECT id, seller_id, product_id, buyer_id, (SELECT users.name FROM users WHERE users.id = orders.seller_id) AS seller_name, (SELECT products.name FROM products WHERE products.id = orders.product_id) AS product_name, (SELECT users.name FROM users WHERE users.id = orders.buyer_id) as buyer_name FROM orders WHERE 1", con);
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
                 while (rdr.Read())
                 {
                     try
                     {
-                        test.AddOrder(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3));
+                        test.AddOrder(rdr.GetInt32(0), rdr.GetInt32(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetString(4), rdr.GetString(5), rdr.GetString(6));
                     }
                     catch (Exception)
                     {
-                        test.AddOrder(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), "null");
+                        test.AddOrder(rdr.GetInt32(0), rdr.GetInt32(1), rdr.GetInt32(2), 0, rdr.GetString(4), rdr.GetString(5), "null");
                     }
                 }
             }
@@ -191,14 +191,9 @@ namespace Ebay
             {
                 Console.WriteLine("Worng Password Try Again");
             }
-            Console.WriteLine("Press X to main menu");
             Console.WriteLine("Username: {0}", test.UserID(id).name);
             Console.Write("Password: ");
             var pass = Console.ReadLine();
-            if (pass == "x")
-            {
-                Start(con, test);
-            }
             if (test.CheckPassword(id, pass) == true)
             {
                 Menu(test, id);
