@@ -59,7 +59,7 @@ namespace Ebay
         {
             Console.Title = "Mini Ebay";
             Database test = new Database();
-            string cs = @"server=localhost;userid=root;password=;database=csharp";
+            string cs = @"server=localhost;userid=root;password=toor;database=csharp";
             using var con = new MySqlConnection(cs);
             con.Open();
 
@@ -199,7 +199,7 @@ namespace Ebay
             var pass = Console.ReadLine();
             if (test.CheckPassword(id, pass) == true)
             {
-                Menu(test, id);
+                Menu(con, test, id);
             }
             else
             {
@@ -207,7 +207,7 @@ namespace Ebay
             }
         }
 
-        public static void Menu(Database test, int id)
+        public static void Menu(MySqlConnection con, Database test, int id)
         {
             while (true)
             {
@@ -225,8 +225,18 @@ namespace Ebay
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        test.ListAvailableOrders();
-                        Console.ReadLine();
+                        try
+                        {
+                            test.ListAvailableOrders();
+                            Console.Write("\r\nSelect a product to buy: ");
+                            int bproduct = Convert.ToInt32(Console.ReadLine());
+                            test.BuyProduct(con, test, id, bproduct);
+                            CollectOrders(con, test);
+                        }
+                        catch (Exception)
+                        {
+                            break;
+                        }
                         break;
                     case "2":
                         break;

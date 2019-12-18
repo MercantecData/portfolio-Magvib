@@ -95,7 +95,7 @@ namespace Ebay
             {
                 if (orders[i].buyer_id == 0)
                 {
-                    Console.WriteLine("{0}) {1} is selling: {2}", i, orders[i].seller_name, orders[i].product_name);
+                    Console.WriteLine("{0}) {1} is selling: {2}", i++, orders[i].seller_name, orders[i].product_name);
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace Ebay
             {
                 if (orders[i].seller_id == id)
                 {
-                    Console.WriteLine("{0}) {1} : sold by : {2}", i, orders[i].product_name, orders[i].seller_name);
+                    Console.WriteLine("{0}) {1} : sold by : {2}", i++, orders[i].product_name, orders[i].seller_name);
                 }
             }
         }
@@ -114,6 +114,22 @@ namespace Ebay
         public Order OrderID(int id)
         {
             return orders[id];
+        }
+
+        public int OrderCount()
+        {
+            return orders.Count;
+        }
+
+        public void BuyProduct(MySqlConnection con, Database test, int id, int bproduct)
+        {
+            for (int i = 0; i < test.OrderCount(); i++)
+            {
+                if (test.OrderID(i).id == bproduct)
+                {
+                    new MySqlCommand("UPDATE orders SET buyer_id = '" + test.UserID(id).id + "' WHERE id = " + test.OrderID(i).id + "", con).ExecuteScalar();
+                }
+            }
         }
     }
 }
