@@ -69,6 +69,11 @@ namespace Ebay
             return products[id];
         }
 
+        public int ProductCount()
+        {
+            return products.Count;
+        }
+
 
         // Orders
         public void AddOrder(int id, int seller_id, int product_id, int buyer_id, string seller_name, string product_name, string buyer_name)

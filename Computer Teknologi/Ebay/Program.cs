@@ -227,6 +227,8 @@ namespace Ebay
                     case "1":
                         try
                         {
+                            Console.Clear();
+                            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
                             test.ListAvailableOrders();
                             Console.Write("\r\nSelect a product to buy: ");
                             int bproduct = Convert.ToInt32(Console.ReadLine());
@@ -235,6 +237,7 @@ namespace Ebay
                                 new MySqlCommand("UPDATE orders SET buyer_id = '" + test.UserID(id).id + "' WHERE id = " + test.OrderID(bproduct).id + "", con).ExecuteScalar();
                             }
                             CollectOrders(con, test);
+                            CollectProducts(con, test);
                         }
                         catch (Exception)
                         {
@@ -242,6 +245,29 @@ namespace Ebay
                         }
                         break;
                     case "2":
+                        try
+                        {
+                            Console.Clear();
+                            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
+                            Console.Write("\r\nName of product to sell: ");
+                            var product = Console.ReadLine();
+                            Console.Write("Price: ");
+                            int price = Convert.ToInt32(Console.ReadLine());
+                            new MySqlCommand("INSERT INTO products(name, price) VALUES ('"+product+"',"+price+")", con).ExecuteScalar();
+                            CollectOrders(con, test);
+                            CollectProducts(con, test);
+                            for (int i = 0; i < test.ProductCount(); i++)
+                            {
+                                if (test.ProductID(i).name == product && test.ProductID(i).price == price)
+                                {
+                                    new MySqlCommand("INSERT INTO orders(seller_id, product_id) VALUES (" + test.UserID(id).id + "," + test.ProductID(i).id + ")", con).ExecuteScalar();
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            break;
+                        }
                         break;
                     case "3":
                         test.ListOrdersWithID(test.UserID(id).id);
