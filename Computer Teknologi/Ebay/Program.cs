@@ -55,13 +55,80 @@ namespace Ebay
             }
         }
 
+        public static void DatabaseConnection(MySqlConnection con, Database test)
+        {
+            try
+            {
+                con.Open();
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
+                Console.WriteLine("Can't connect to the database");
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1) Change database info");
+                Console.WriteLine("2) Exit");
+                Console.Write("\r\nSelect an option: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
+
+                        Console.Write("Server: ");
+                        var server = Console.ReadLine();
+                        Console.Write("UserID: ");
+                        var userid = Console.ReadLine();
+                        Console.Write("password: ");
+                        var password = Console.ReadLine();
+                        Console.Write("Database(the name of the database to create): ");
+                        var database = Console.ReadLine();
+
+                        string cs = @"server=" + server + ";userid=" + userid + ";password=" + password + "";
+                        con = new MySqlConnection(cs);
+
+                        using (var cmd = con.CreateCommand())
+                        {
+                            con.Open();
+                            cmd.CommandText = ("CREATE DATABASE IF NOT EXISTS `" + database + "`");
+                            cmd.ExecuteNonQuery();
+                        }
+                        con.Close();
+                        cs = @"server=" + server + ";userid=" + userid + ";password=" + password + ";database="+database;
+                        con = null;
+                        con = new MySqlConnection(cs);
+                        con.Open();
+                        new MySqlCommand("CREATE TABLE IF NOT EXISTS `users` (`id` int(11) NOT NULL AUTO_INCREMENT, `name` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, PRIMARY KEY (`id`));", con).ExecuteScalar();
+                        new MySqlCommand("CREATE TABLE IF NOT EXISTS `products` (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(255) NOT NULL,`price` varchar(255) NOT NULL,PRIMARY KEY (`id`));", con).ExecuteScalar();
+                        new MySqlCommand("CREATE TABLE IF NOT EXISTS `orders` (`id` int(11) NOT NULL AUTO_INCREMENT,`seller_id` int(11) NOT NULL,`product_id` int(11) NOT NULL,`buyer_id` int(11) DEFAULT NULL,PRIMARY KEY (`id`),KEY `seller_id` (`seller_id`),KEY `product_id` (`product_id`),KEY `buyer_id` (`buyer_id`),CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`buyer_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT);", con).ExecuteScalar();
+
+                        CollectUsers(con, test);
+                        CollectProducts(con, test);
+                        CollectOrders(con, test);
+                        Start(con, test);
+
+                        break;
+                    case "2":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.Title = "Mini Ebay";
-            Database test = new Database();
             string cs = @"server=localhost;userid=root;password=toor;database=csharp";
-            using var con = new MySqlConnection(cs);
-            con.Open();
+            MySqlConnection con = new MySqlConnection(cs);
+            Database test = new Database();
+            DatabaseConnection(con, test);
 
             CollectUsers(con, test);
             CollectProducts(con, test);
@@ -139,6 +206,10 @@ namespace Ebay
                     
                 }
             }
+            if (test.UserCount() == 0)
+            {
+                allow = true;
+            }
             if (allow == true)
             {
                 new MySqlCommand("INSERT INTO users (name, password) VALUES ('" + user + "', '" + pass + "');", con).ExecuteScalar();
@@ -148,7 +219,6 @@ namespace Ebay
                 Console.ReadLine();
                 Start(con, test);
             }
-
         }
 
         public static void Users(MySqlConnection con, Database test)
