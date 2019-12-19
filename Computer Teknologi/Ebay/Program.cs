@@ -254,15 +254,9 @@ namespace Ebay
                             Console.Write("Price: ");
                             int price = Convert.ToInt32(Console.ReadLine());
                             new MySqlCommand("INSERT INTO products(name, price) VALUES ('"+product+"',"+price+")", con).ExecuteScalar();
+                            new MySqlCommand("INSERT INTO orders(seller_id, product_id) VALUES (" + test.UserID(id).id + ", LAST_INSERT_ID())", con).ExecuteScalar();
                             CollectOrders(con, test);
                             CollectProducts(con, test);
-                            for (int i = 0; i < test.ProductCount(); i++)
-                            {
-                                if (test.ProductID(i).name == product && test.ProductID(i).price == price)
-                                {
-                                    new MySqlCommand("INSERT INTO orders(seller_id, product_id) VALUES (" + test.UserID(id).id + "," + test.ProductID(i).id + ")", con).ExecuteScalar();
-                                }
-                            }
                         }
                         catch (Exception)
                         {
