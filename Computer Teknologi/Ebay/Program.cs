@@ -339,7 +339,7 @@ namespace Ebay
 
                         try
                         {
-                            test.ListOrdersWithID(test.UserID(id).id);
+                            test.SellOrdersWithID(test.UserID(id).id);
                             Console.Write("\r\nSelect a product to delete: ");
                             int dproduct = Convert.ToInt32(Console.ReadLine());
                             if (dproduct < test.OrderCount() || dproduct >= 0)

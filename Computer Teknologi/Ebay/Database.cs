@@ -74,6 +74,17 @@ namespace Ebay
             return products.Count;
         }
 
+        public Product ProductPID(int id)
+        {
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (id == products[i].id)
+                {
+                    return products[i];
+                }
+            }
+            return null;
+        }
 
         // Orders
         public void AddOrder(int id, int seller_id, int product_id, int buyer_id, string seller_name, string product_name, string buyer_name)
@@ -100,7 +111,7 @@ namespace Ebay
             {
                 if (orders[i].buyer_id == 0)
                 {
-                    Console.WriteLine("{0}) {1} is selling: {2}", i, orders[i].seller_name, orders[i].product_name);
+                    Console.WriteLine("{0}) {1} is selling: {2}, for {3} dkk", i, orders[i].seller_name, orders[i].product_name, ProductPID(orders[i].product_id).price);
                 }
             }
         }
@@ -109,9 +120,20 @@ namespace Ebay
         {
             for (int i = 0; i < orders.Count; i++)
             {
+                if (orders[i].buyer_id == id)
+                {
+                    Console.WriteLine("{0}) {1} : sold by : {2}, for {3} dkk", i, orders[i].product_name, orders[i].seller_name, ProductPID(orders[i].product_id).price);
+                }
+            }
+        }
+
+        public void SellOrdersWithID(int id)
+        {
+            for (int i = 0; i < orders.Count; i++)
+            {
                 if (orders[i].seller_id == id)
                 {
-                    Console.WriteLine("{0}) {1} : sold by : {2}", i, orders[i].product_name, orders[i].seller_name);
+                    Console.WriteLine("{0}) {1} : sold by : {2}, for {3} dkk", i, orders[i].product_name, orders[i].seller_name, ProductPID(orders[i].product_id).price);
                 }
             }
         }
