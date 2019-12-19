@@ -270,8 +270,26 @@ namespace Ebay
                         }
                         break;
                     case "3":
-                        test.ListOrdersWithID(test.UserID(id).id);
-                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
+
+                        try
+                        {
+                            test.ListOrdersWithID(test.UserID(id).id);
+                            Console.Write("\r\nSelect a product to delete: ");
+                            int dproduct = Convert.ToInt32(Console.ReadLine());
+                            if (dproduct < test.OrderCount() || dproduct >= 0)
+                            {
+                                new MySqlCommand("DELETE FROM products WHERE id = "+test.OrderID(dproduct).product_id+"", con).ExecuteScalar();
+                            }
+                            CollectOrders(con, test);
+                            CollectProducts(con, test);
+
+                        }
+                        catch (Exception)
+                        {
+                            break;
+                        }
                         break;
                     case "4":
                         break;
