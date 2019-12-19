@@ -292,6 +292,18 @@ namespace Ebay
                         }
                         break;
                     case "4":
+                        try
+                        {
+                            Console.Clear();
+                            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Mini Ebay!"));
+                            test.ListOrdersWithID(test.UserID(id).id);
+                            Console.Write("\r\nPress Enter to return...");
+                            Console.ReadLine();
+                        }
+                        catch (Exception)
+                        {
+                            break;
+                        }
                         break;
                     case "5":
                         Environment.Exit(0);
