@@ -1,5 +1,9 @@
 # Computer Teknologi
 
+## Connection Problem
+If it cant connect to a database it asks you for the new database information and will automatically setup the tables.<br>
+![10](https://github.com/MercantecData/portfolio-Magvib/blob/master/Computer%20Teknologi/pic/10.png)
+![11](https://github.com/MercantecData/portfolio-Magvib/blob/master/Computer%20Teknologi/pic/11.png)
 
 ## Start Menu
 Here we have the main menu.<br>
