@@ -37,6 +37,24 @@ Here you can delete a product but your user have to be the creator for the produ
 Here you can see all the products you have bought.<br>
 ![9](https://github.com/MercantecData/portfolio-Magvib/blob/master/Computer%20Teknologi/pic/9.png)
 
+## Users table
+`id` | name | password
+--- | --- | ---
+`1` | Mads | password1234
+`2` | Guest | 123456
+
+## Products table
+`id` | name | price
+--- | --- | ---
+`1` | Coca Cola | 10
+`2` | Scone | 6
+
+## Orders table
+`id` | `seller_id` | `product_id` | `buyer_id`
+--- | --- | --- | ---
+`1` | `1` | `2` | `null`
+`2` | `2` | `1` | `1`
+
 ## Database Code
 Here is the code for the database
 ```mysql
