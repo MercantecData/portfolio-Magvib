@@ -4,14 +4,20 @@ using System.Text;
 
 namespace OOP
 {
-    public class Monitor : Global
+    public class Monitor
     {
+        public string name { get; private set; }
+        public string model { get; private set; }
+        public int price { get; private set; }
         public int inches { get; private set; }
 
         public int hz { get; private set; }
 
-        public Monitor(string name, string model, int price, int inches, int hz) : base(name, model, price)
+        public Monitor(string name, string model, int price, int inches, int hz)
         {
+            this.name = name;
+            this.model = model;
+            this.price = price;
             this.inches = inches;
             this.hz = hz;
         }

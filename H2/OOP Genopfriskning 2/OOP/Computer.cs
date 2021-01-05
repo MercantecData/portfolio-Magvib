@@ -4,8 +4,11 @@ using System.Text;
 
 namespace OOP
 {
-    public class Computer : Global
+    public class Computer
     {
+        public string name { get; private set; }
+        public string model { get; private set; }
+        public int price { get; private set; }
         public Keyboard keyboard { get; private set; }
 
         public List<Monitor> monitor{ get; private set; }
@@ -16,8 +19,11 @@ namespace OOP
 
         public Motherboard motherboard{ get; private set; }
 
-        public Computer(string name, string model) : base(name, model, 0)
+        public Computer(string name, string model)
         {
+            this.name = name;
+            this.model = model;
+            this.price = 0;
             this.monitor = new List<Monitor>();
         }
 
@@ -44,6 +50,18 @@ namespace OOP
         public void setMotherboard(Motherboard m)
         {
             this.motherboard = m;
+        }
+
+        public int totalPrice()
+        {
+            int price = this.price + this.keyboard.price + this.mouse.price + this.motherboard.totalPrice() + this.powerSupply.price;
+
+            foreach (Monitor m in this.monitor)
+            {
+                price = price + m.price;
+            }
+
+            return price;
         }
     }
 }

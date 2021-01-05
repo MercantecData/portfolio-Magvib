@@ -4,8 +4,11 @@ using System.Text;
 
 namespace OOP
 {
-    public class Motherboard : Global
+    public class Motherboard
     {
+        public string name { get; private set; }
+        public string model { get; private set; }
+        public int price { get; private set; }
         public int memorySlots { get; private set; }
 
         public CPU cpu { get; private set; }
@@ -16,8 +19,11 @@ namespace OOP
 
         public List<Storage> storage { get; private set; }
 
-        public Motherboard(string name, string model, int price, int memorySlots) : base(name, model, price)
+        public Motherboard(string name, string model, int price, int memorySlots)
         {
+            this.name = name;
+            this.model = model;
+            this.price = price;
             this.memorySlots = memorySlots;
             this.memory = new List<Memory>();
             this.storage = new List<Storage>();
@@ -41,6 +47,23 @@ namespace OOP
         public void addStorage(Storage s)
         {
             this.storage.Add(s);
+        }
+
+        public int totalPrice()
+        {
+            int price = this.price + this.cpu.price + this.gpu.price;
+
+            foreach (Memory m in this.memory)
+            {
+                price = price + m.price;
+            }
+
+            foreach (Storage s in this.storage)
+            {
+                price = price + s.price;
+            }
+
+            return price;
         }
     }
 }

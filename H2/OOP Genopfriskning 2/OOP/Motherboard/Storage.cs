@@ -4,14 +4,20 @@ using System.Text;
 
 namespace OOP
 {
-    public class Storage : Global
+    public class Storage
     {
+        public string name { get; private set; }
+        public string model { get; private set; }
+        public int price { get; private set; }
         public int dataRate { get; private set; }
 
         public int capacity { get; private set; }
 
-        public Storage(string name, string model, int price, int dataRate, int capacity) : base(name, model, price)
+        public Storage(string name, string model, int price, int dataRate, int capacity)
         {
+            this.name = name;
+            this.model = model;
+            this.price = price;
             this.dataRate = dataRate;
             this.capacity = capacity;
         }

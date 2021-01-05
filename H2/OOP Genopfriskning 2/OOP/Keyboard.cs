@@ -4,10 +4,16 @@ using System.Text;
 
 namespace OOP
 {
-    public class Keyboard : Global
+    public class Keyboard
     {
-        public Keyboard(string name, string model, int price) : base(name, model, price)
+        public string name { get; private set; }
+        public string model { get; private set; }
+        public int price { get; private set; }
+        public Keyboard(string name, string model, int price)
         {
+            this.name = name;
+            this.model = model;
+            this.price = price;
         }
     }
 }
