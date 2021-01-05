@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8rJ2PvagqkIidD2j0VIn+5BOOPNbg7TzBnbC7gG5C3Gnht1CcRoc6bdfqErU3dziO8qpuHL1tAzUjHJz79lQhw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\magnu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\magnu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
