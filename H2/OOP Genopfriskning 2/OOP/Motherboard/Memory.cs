@@ -15,5 +15,15 @@ namespace OOP
             this.speed = speed;
             this.memory = memory;
         }
+
+        public void setMemory(int memory)
+        {
+            this.memory = memory;
+        }
+
+        public void setSpeed(int speed)
+        {
+            this.speed = speed;
+        }
     }
 }

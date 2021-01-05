@@ -12,5 +12,10 @@ namespace OOP
         {
             this.memory = memory;
         }
+
+        public void setMemory(int memory)
+        {
+            this.memory = memory;
+        }
     }
 }

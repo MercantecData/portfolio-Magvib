@@ -6,44 +6,44 @@ namespace OOP
 {
     public class Computer : Global
     {
-        public Keyboard keyboard { get; set; }
+        public Keyboard keyboard { get; private set; }
 
-        public List<Monitor> monitor{ get; set; }
+        public List<Monitor> monitor{ get; private set; }
 
-        public Mouse mouse { get; set; }
+        public Mouse mouse { get; private set; }
 
-        public PowerSupply powerSupply{ get; set; }
+        public PowerSupply powerSupply{ get; private set; }
 
-        public Motherboard motherboard{ get; set; }
+        public Motherboard motherboard{ get; private set; }
 
         public Computer(string name, string model) : base(name, model, 0)
         {
             this.monitor = new List<Monitor>();
         }
 
-        public void setKeyboard(string name, string model, int price)
+        public void setKeyboard(Keyboard k)
         {
-            this.keyboard = new Keyboard(name, model, price);
+            this.keyboard = k;
         }
 
-        public void setMouse(string name, string model, int price)
+        public void setMouse(Mouse m)
         {
-            this.mouse = new Mouse(name, model, price);
+            this.mouse = m;
         }
 
-        public void addMonitor(string name, string model, int price, int inches, int hz)
+        public void addMonitor(Monitor m)
         {
-            this.monitor.Add(new Monitor(name, model, price, inches, hz));
+            this.monitor.Add(m);
         }
 
-        public void setPowerSupply(string name, string model, int price, int wattage)
+        public void setPowerSupply(PowerSupply p)
         {
-            this.powerSupply = new PowerSupply(name, model, price, wattage);
+            this.powerSupply = p;
         }
 
-        public void setMotherboard(string name, string model, int price, int memorySlots)
+        public void setMotherboard(Motherboard m)
         {
-            this.motherboard = new Motherboard(name, model, price, memorySlots);
+            this.motherboard = m;
         }
     }
 }

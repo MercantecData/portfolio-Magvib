@@ -15,5 +15,15 @@ namespace OOP
             this.dataRate = dataRate;
             this.capacity = capacity;
         }
+
+        public void setCapacity(int capacity)
+        {
+            this.capacity = capacity;
+        }
+
+        public void setDataRate(int dataRate)
+        {
+            this.dataRate = dataRate;
+        }
     }
 }

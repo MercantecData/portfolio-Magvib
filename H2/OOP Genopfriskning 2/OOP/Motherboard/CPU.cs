@@ -15,5 +15,15 @@ namespace OOP
             this.cores = cores;
             this.clock = clock;
         }
+
+        public void setCores(int cores)
+        {
+            this.cores = cores;
+        }
+
+        public void setClock(double clock)
+        {
+            this.clock = clock;
+        }
     }
 }

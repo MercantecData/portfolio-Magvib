@@ -6,15 +6,15 @@ namespace OOP
 {
     public class Motherboard : Global
     {
-        public int memorySlots { get; set; }
+        public int memorySlots { get; private set; }
 
-        public CPU cpu { get; set; }
+        public CPU cpu { get; private set; }
 
-        public GPU gpu { get; set; }
+        public GPU gpu { get; private set; }
 
-        public List<Memory> memory { get; set; }
+        public List<Memory> memory { get; private set; }
 
-        public List<Storage> storage { get; set; }
+        public List<Storage> storage { get; private set; }
 
         public Motherboard(string name, string model, int price, int memorySlots) : base(name, model, price)
         {
@@ -23,24 +23,24 @@ namespace OOP
             this.storage = new List<Storage>();
         }
 
-        public void setCPU(string name, string model, int price, int cores, float clock)
+        public void setCPU(CPU c)
         {
-            this.cpu = new CPU(name, model, price, cores, clock);
+            this.cpu = c;
         }
 
-        public void setGPU(string name, string model, int price, int memory)
+        public void setGPU(GPU g)
         {
-            this.gpu = new GPU(name, model, price, memory);
+            this.gpu = g;
         }
 
-        public void addMemory(string name, string model, int price, int speed, int memory)
+        public void addMemory(Memory m)
         {
-            this.memory.Add(new Memory(name, model, price, speed, memory));
+            this.memory.Add(m);
         }
 
-        public void addStorage(string name, string model, int price, int dataRate, int capacity)
+        public void addStorage(Storage s)
         {
-            this.storage.Add(new Storage(name, model, price, dataRate, capacity));
+            this.storage.Add(s);
         }
     }
 }
