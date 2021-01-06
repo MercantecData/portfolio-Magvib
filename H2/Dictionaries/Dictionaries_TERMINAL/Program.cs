@@ -16,6 +16,8 @@ namespace Dictionaries_TERMINAL
             l.removeBookByName("Harry Potter E1");
             l.removeBook(l.getBook("Harry Potter E2"));
 
+            l.getBook("Harry Potter E3").setTotalPages(123);
+
             Console.WriteLine(l.getBook("Harry Potter E3").totalPages);
 
             l.getBook("Harry Potter E3").changeName("Harry Potter E4", l);

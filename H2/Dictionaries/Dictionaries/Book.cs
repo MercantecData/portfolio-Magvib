@@ -21,7 +21,7 @@ namespace Dictionaries
             this.name = name;
         }
 
-        public void changeTotalPages (int amount)
+        public void setTotalPages (int amount)
         {
             this.totalPages = amount;
         }
