@@ -20,5 +20,10 @@ namespace Dictionaries
             l.changeKey(this.name, name);
             this.name = name;
         }
+
+        public void changeTotalPages (int amount)
+        {
+            this.totalPages = amount;
+        }
     }
 }
