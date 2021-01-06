@@ -14,5 +14,12 @@ namespace OOP
             this.storageInGb = storageInGb;
             this.memorySizeInGb = memorySizeInGb;
         }
+
+       public virtual void systemCheck()
+       {
+            Console.WriteLine("--------");
+            Console.WriteLine(this.name + ": is online");
+            Console.WriteLine("System is up to date.");
+       }
     }
 }

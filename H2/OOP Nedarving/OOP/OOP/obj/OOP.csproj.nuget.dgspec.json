@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj": {}
+    "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj": {
+    "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj",
+        "projectUniqueName": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj",
         "projectName": "OOP",
-        "projectPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj",
-        "packagesPath": "C:\\Users\\magnu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\obj\\",
+        "projectPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\OOP.csproj",
+        "packagesPath": "C:\\Users\\Rito\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\magnu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rito\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
