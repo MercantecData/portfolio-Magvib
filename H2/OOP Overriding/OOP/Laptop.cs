@@ -23,5 +23,10 @@ namespace OOP
 
             Console.WriteLine("Battery size: " + this.batterySizeInMAH);
         }
+
+        public override string GetDescription()
+        {
+            return "|----------|\nName: " + this.name + "\nStorageInGB: " + this.storageInGb + "\nMemoryInGB: " + this.memorySizeInGb + "\nScreenSize: " + this.screenSize + "\nBatterSize: " + this.batterySizeInMAH + "\nSpeaker: " + this.speakerModel;
+        }
     }
 }

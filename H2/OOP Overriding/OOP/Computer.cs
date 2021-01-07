@@ -2,7 +2,7 @@
 
 namespace OOP
 {
-    public class Computer
+    public abstract class Computer
     {
         public string name { get; set; }
         public int storageInGb { get; set; }
@@ -15,11 +15,13 @@ namespace OOP
             this.memorySizeInGb = memorySizeInGb;
         }
 
-       public virtual void systemCheck()
-       {
+        public virtual void systemCheck()
+        {
             Console.WriteLine("--------");
             Console.WriteLine(this.name + ": is online");
             Console.WriteLine("System is up to date.");
-       }
+        }
+
+        public abstract string GetDescription();
     }
 }

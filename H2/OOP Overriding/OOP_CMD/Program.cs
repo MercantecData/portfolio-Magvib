@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OOP;
 
 namespace OOP_CMD
@@ -7,17 +8,25 @@ namespace OOP_CMD
     {
         static void Main(string[] args)
         {
-            Router r = new Router("ASUS Router", 115, 8, 12);
-            r.systemCheck();
+            ComputerShop cp = new ComputerShop("Elgiganten");
 
-            Laptop l = new Laptop("ASUS Laptop", 500, 16, 24, "Bose", 32000);
-            l.systemCheck();
+            cp.addComputer(new Router("ASUS Router", 115, 8, 12));
+            cp.addComputer(new Laptop("ASUS Laptop", 500, 16, 24, "Bose", 32000));
+            cp.addComputer(new Phone("Iphone", 128, 8, 6, 16000, 80));
+            cp.addComputer(new Server("Homelab Server", 10000, 100, "AMD epyc 7742", 64, 3.4));
 
-            Phone p = new Phone("Iphone", 128, 8, 6, 16000, 80);
-            p.systemCheck();
 
-            Server s = new Server("Homelab Server", 10000, 100, "AMD epyc 7742", 64, 3.4);
-            s.systemCheck();
+            // Virtual calls
+            foreach (KeyValuePair<string, Computer> c in cp.computers)
+            {
+                c.Value.systemCheck();
+            }
+
+            // Abstract calls
+            foreach (KeyValuePair<string, Computer> c in cp.computers)
+            {
+                Console.WriteLine(c.Value.GetDescription());
+            }
         }
     }
 }

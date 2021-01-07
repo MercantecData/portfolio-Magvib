@@ -24,6 +24,11 @@ namespace OOP
             Console.WriteLine("Battery level: " + this.batteryLevel);
         }
 
+        public override string GetDescription()
+        {
+            return "|----------|\nName: " + this.name + "\nStorageInGB: " + this.storageInGb + "\nMemoryInGB: " + this.memorySizeInGb + "\nScreenSize: " + this.screenSize + "\nBatterSize: " + this.batterySizeInMAH + "\nBatterLevel: " + this.batteryLevel;
+        }
+
         public int getBatteryLevel()
         {
             return this.batteryLevel;

@@ -27,6 +27,10 @@ namespace OOP
                 Console.WriteLine("Wifi is not online");
             }
         }
+        public override string GetDescription()
+        {
+            return "|----------|\nName: " + this.name + "\nStorageInGB: " + this.storageInGb + "\nMemoryInGB: " + this.memorySizeInGb + "\nWifiRange: " + this.wifiRangeInMeters + "\nWifiIsOnline: " + (this.wifiOnline == true ? "Yes" : "No");
+        }
 
         public string isOnline()
         {

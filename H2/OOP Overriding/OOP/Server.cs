@@ -26,6 +26,11 @@ namespace OOP
             Console.WriteLine("Server total cores: " + this.cores);
         }
 
+        public override string GetDescription()
+        {
+            return "|----------|\nName: " + this.name + "\nStorageInGB: " + this.storageInGb + "\nMemoryInGB: " + this.memorySizeInGb + "\nProcessor: " + this.processor + "\nCores: " + this.cores;
+        }
+
         public string getNameWithProcessor()
         {
             return this.name + " : " + this.processor;
