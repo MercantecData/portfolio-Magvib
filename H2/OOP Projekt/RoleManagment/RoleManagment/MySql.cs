@@ -14,7 +14,6 @@ namespace RoleManagment
         public string db_host { get; private set; }
         public int db_port { get; private set; }
         public string db_name { get; private set; }
-
         public string db_user { get; private set; }
         public string db_pass { get; private set; }
 
@@ -106,7 +105,7 @@ namespace RoleManagment
             string keys = String.Join(", ", ObjData.Keys);
 
             string values = "'";
-            values += String.Join("', '", ObjData.Values);
+            values += String.Join("', '", ObjData.Values); // make a check if empty
             values += "'";
             values = values.Replace("''", "'0'");
 
@@ -201,7 +200,7 @@ namespace RoleManagment
                 try
                 {
 
-                    if (!prop.Name.Contains("db_") && !prop.Name.Contains("x_"))
+                    if (!prop.Name.Contains("db_") && !prop.Name.Contains("x_") && !prop.Name.Contains("id"))
                     {
                         ObjData.Add(prop.Name, (string)prop.GetValue(this));
                     }                    
@@ -210,6 +209,21 @@ namespace RoleManagment
                 {
                     try
                     {
+                        //PropertyInfo test = prop.GetValue(this);
+                        //Console.WriteLine(prop.GetValue(this).GetType());
+                        //ObjData.Add(prop.Name, (string)prop.GetValue(this));
+
+                        //Object obj = Activator.CreateInstance(prop.PropertyType, prop.GetValue(this));
+                        //MySql test = (MySql)obj;
+                        //ObjData.Add(prop.Name, test.id.ToString());
+
+                        //MySql obj = (MySql)Activator.CreateInstance(typeof(MySql), prop.GetValue(this));
+                        //Console.WriteLine(obj.id.ToString());
+                        //ObjData.Add(prop.Name, obj.id.ToString());
+
+                        MySql obj = (MySql)prop.GetValue(this);
+                        //Console.WriteLine(obj.id.ToString());
+                        ObjData.Add(prop.Name, obj.id.ToString());
                     }
                     catch (Exception) { }
                 }

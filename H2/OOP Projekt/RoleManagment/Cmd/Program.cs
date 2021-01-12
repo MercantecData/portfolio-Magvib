@@ -9,10 +9,12 @@ namespace Cmd
     {
         static void Main(string[] args)
         {
-            //List<User> u = User.getAllUsers();
             //User u = new User("Magvib");
-
-            //Console.WriteLine(u.username);
+            //Console.WriteLine(u.role.role);
+            //u.role = new Role("Admin");
+            //u.save();
+            //u = new User("Magvib");
+            //Console.WriteLine(u.role.role);
             //Console.ReadLine();
 
             while (true)
