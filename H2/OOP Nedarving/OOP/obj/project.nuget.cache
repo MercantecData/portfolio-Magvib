@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "F0Ct+q/fsJplMt4nipfWxmUEzB/MoA/eMOQPWw6tbGdutmx2EeGibjbqLAWpZb2AkmYf/NDzCQcWgb2EqXQKVw==",
+  "dgSpecHash": "it1mSzMM7W2Jx52ye0rT6zPsV3PkU4bEbT7PYC3sPeDbO9voKFDzOm7G1V3aQc7MRb5m+2TdyQ1Qt6BbcOuvJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj",
+  "projectFilePath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Rito\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Rito\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\magnu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\magnu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

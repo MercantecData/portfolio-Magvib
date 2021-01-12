@@ -17,7 +17,7 @@ namespace Dictionaries_TERMINAL
             l.addBook(new Book("Harry Potter E5", 423));
             l.addBook(new Book("Harry Potter E6", 873));
 
-            l.removeBookByName("Harry Potter E1");
+            l.removeBook("Harry Potter E1");
             l.removeBook(l.getBook("Harry Potter E2"));
 
             l.getBook("Harry Potter E3").setTotalPages(123);

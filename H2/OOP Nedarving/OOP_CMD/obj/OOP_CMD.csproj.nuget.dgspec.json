@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj": {}
+    "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj": {
+    "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj",
+        "projectUniqueName": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj",
         "projectName": "OOP",
-        "projectPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj",
-        "packagesPath": "C:\\Users\\Rito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\obj\\",
+        "projectPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj",
+        "packagesPath": "C:\\Users\\magnu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Rito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\magnu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,17 +61,17 @@
         }
       }
     },
-    "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj": {
+    "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj",
+        "projectUniqueName": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj",
         "projectName": "OOP_CMD",
-        "projectPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj",
-        "packagesPath": "C:\\Users\\Rito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\obj\\",
+        "projectPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\OOP_CMD.csproj",
+        "packagesPath": "C:\\Users\\magnu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP_CMD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Rito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\magnu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,8 +85,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj": {
-                "projectPath": "C:\\Users\\Rito\\Documents\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj"
+              "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj": {
+                "projectPath": "C:\\Users\\magnu\\Desktop\\portfolio-Magvib\\H2\\OOP Nedarving\\OOP\\OOP.csproj"
               }
             }
           }

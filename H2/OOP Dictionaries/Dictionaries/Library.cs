@@ -22,7 +22,7 @@ namespace Dictionaries
         {
             this.books.Remove(b.name);
         }
-        public void removeBookByName(string name)
+        public void removeBook(string name)
         {
             this.books.Remove(name);
         }
