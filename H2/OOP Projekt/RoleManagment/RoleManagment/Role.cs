@@ -6,10 +6,10 @@ namespace RoleManagment
 {
     public class Role : MySql
     {
-        public string role { get; private set; }
-        public string prefix { get; private set; }
+        public string role { get; set; }
+        public string prefix { get; set; }
 
-        public Role(int id = 0) : base()
+        public Role(int id = 0) : base("role", "id", id.ToString())
         {
             try
             {
@@ -29,7 +29,7 @@ namespace RoleManagment
             }
         }
 
-        public Role(string name = "") : base()
+        public Role(string name = "") : base("role", "role", name)
         {
             try
             {
@@ -46,48 +46,6 @@ namespace RoleManagment
             catch (Exception)
             {
                 this.id = 0;
-            }
-        }
-
-        public override void save()
-        {
-            if (this.id != 0)
-            {
-                try
-                {
-                    this.set("UPDATE role SET role = '" + this.role + "', prefix = '" + this.prefix + "' WHERE id = " + this.id + "");
-                }
-                catch (Exception)
-                {
-                    throw new Exception("Failed to save user");
-                }
-            }
-            else
-            {
-                try
-                {
-                    this.set("INSERT INTO user(role, prefix) VALUES ('" + this.role + "', '" + this.prefix + "')");
-                    this.id = this.getLastId();
-                }
-                catch (Exception)
-                {
-                    throw new Exception("Failed to insert user");
-                }
-            }
-        }
-
-        public override void delete()
-        {
-            if (this.id != 0)
-            {
-                try
-                {
-                    this.set("DELETE FROM user WHERE id = '" + this.id + "'");
-                }
-                catch (Exception)
-                {
-                    throw new Exception("Failed to delete user");
-                }
             }
         }
     }

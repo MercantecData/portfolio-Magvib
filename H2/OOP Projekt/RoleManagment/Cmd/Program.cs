@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using RoleManagment;
 
 namespace Cmd
@@ -6,13 +8,12 @@ namespace Cmd
     class Program
     {
         static void Main(string[] args)
-        {            
-            //User u = new User(1);
+        {
+            //List<User> u = User.getAllUsers();
+            //User u = new User("Magvib");
 
-            //Console.WriteLine("----------");
             //Console.WriteLine(u.username);
-            //Console.WriteLine(u.password);
-            //u.save();
+            //Console.ReadLine();
 
             while (true)
             {
@@ -123,8 +124,14 @@ namespace Cmd
                 Console.WriteLine("");
                 Console.WriteLine("1. Change password");
                 Console.WriteLine("2. Delete account");
-                Console.WriteLine("3. Logout");
-                
+                Console.WriteLine("3. Send mail (coming soon)");
+                Console.WriteLine("5. Logout");
+
+                if (u.role.role == "Admin")
+                {
+                    Console.WriteLine("9. Admin");
+                }
+
                 var option = Console.ReadKey();
 
                 if (option.Key == ConsoleKey.D1)
@@ -135,6 +142,11 @@ namespace Cmd
                 if (option.Key == ConsoleKey.D2)
                 {
                     deleteAccount(u);
+                }
+
+                if (option.Key == ConsoleKey.D9 && u.role.role == "Admin")
+                {
+                    admin(u);
                 }
             }
 
@@ -184,16 +196,43 @@ namespace Cmd
                     try
                     {
                         u.delete();
+                        start();
                     }
                     catch (Exception)
                     {
-                        home(u, "Failed to change password");
+                        home(u, "Failed to delete account");
                     }
                 }
 
-                start();
+                home(u);
             }
 
+            void admin(User u)
+            {
+                if(u.role.role != "Admin")
+                {
+                    home(u);
+                }
+
+                Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.WriteLine("Welcome " + u.role.prefix + " " + u.username + " To Admin Panel");
+
+                Console.WriteLine("");
+                Console.WriteLine("1. Delete user");
+                Console.WriteLine("2. Change user role");
+                Console.WriteLine("3. Clear user mail");
+                Console.WriteLine("4. Back");
+
+                var option = Console.ReadKey();
+
+                if (option.Key == ConsoleKey.D4)
+                {
+                    home(u);
+                }
+            }
         }
     }
 }
