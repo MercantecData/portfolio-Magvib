@@ -192,30 +192,22 @@ namespace RoleManagment
             {
                 try
                 {
-
-                    if (!prop.Name.Contains("db_") && !prop.Name.Contains("x_") && !prop.Name.Contains("id"))
+                    if (!prop.Name.Substring(0, 3).Contains("db_") && !prop.Name.Substring(0, 2).Contains("x_") && prop.Name != "id")
                     {
-                        ObjData.Add(prop.Name, (string)prop.GetValue(this));
+                        if(prop.PropertyType.ToString() == "System.Boolean")
+                        {
+                            ObjData.Add(prop.Name, (bool)prop.GetValue(this) ? "1" : "0");
+                        } else
+                        {
+                            ObjData.Add(prop.Name, (string)prop.GetValue(this));
+                        }
                     }                    
                 }
                 catch
                 {
                     try
                     {
-                        //PropertyInfo test = prop.GetValue(this);
-                        //Console.WriteLine(prop.GetValue(this).GetType());
-                        //ObjData.Add(prop.Name, (string)prop.GetValue(this));
-
-                        //Object obj = Activator.CreateInstance(prop.PropertyType, prop.GetValue(this));
-                        //MySql test = (MySql)obj;
-                        //ObjData.Add(prop.Name, test.id.ToString());
-
-                        //MySql obj = (MySql)Activator.CreateInstance(typeof(MySql), prop.GetValue(this));
-                        //Console.WriteLine(obj.id.ToString());
-                        //ObjData.Add(prop.Name, obj.id.ToString());
-
                         MySql obj = (MySql)prop.GetValue(this);
-                        //Console.WriteLine(obj.id.ToString());
                         ObjData.Add(prop.Name, obj.id.ToString());
                     }
                     catch 

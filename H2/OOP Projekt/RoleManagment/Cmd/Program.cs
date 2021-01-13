@@ -10,24 +10,7 @@ namespace Cmd
         static void Main(string[] args)
         {
             //User u = new User("Magvib");
-            //Console.WriteLine(u.role.role);
-            //u.role = new Role("Admin");
-            //u.save();
-            //u = new User("Magvib");
-            //Console.WriteLine(u.role.role);
-            //Console.ReadLine();
-
-            //User u = new User("Magvib");
-
-            //Console.WriteLine(u.username);
-            //Console.WriteLine(u.password);
-            //Console.WriteLine(u.role.role);
-
-            //u.mailbox.sent = 18;
-            //u.mailbox.save();
-            //u.save();
-
-            //Console.ReadLine();
+            //Mail m = new Mail();
 
             while (true)
             {
