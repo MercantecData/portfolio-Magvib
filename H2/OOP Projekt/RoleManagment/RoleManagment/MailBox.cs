@@ -13,5 +13,13 @@ namespace RoleManagment
         {
 
         }
+
+        public override void save()
+        {
+
+            // get the newest inbox and sent values before save.
+
+            base.save();
+        }
     }
 }
