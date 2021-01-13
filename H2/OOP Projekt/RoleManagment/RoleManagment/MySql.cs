@@ -10,24 +10,18 @@ namespace RoleManagment
     public abstract class MySql
     {
         public string db_table { get; set; }
-        public int id { get; set; }
-        public string db_host { get; private set; }
-        public int db_port { get; private set; }
-        public string db_name { get; private set; }
-        public string db_user { get; private set; }
-        public string db_pass { get; private set; }
+        public int id = 0;
+        private string db_host = "os.ht";
+        private int db_port = 3306;
+        private string db_name = "dev";
+        private string db_user = "test";
+        private string db_pass = "8e607a4752fa2e59413e5790536f2b42";
 
         MySqlConnection con;
 
-        public MySql(string db_table = "", string search_query = "", string search_data = "", int id = 0, string db_host = "os.ht", int db_port = 3306, string db_name = "dev", string db_user = "test", string db_pass = "8e607a4752fa2e59413e5790536f2b42")
+        public MySql(string db_table = "", string search_query = "", string search_data = "")
         {
             this.db_table = db_table;
-            this.id = id;
-            this.db_host = db_host;
-            this.db_port = db_port;
-            this.db_name = db_name;
-            this.db_user = db_user;
-            this.db_pass = db_pass;
 
             string cs = "server=" + this.db_host + ";user=" + this.db_user + ";database=" + this.db_name + ";port=" + this.db_port + ";password=" + this.db_pass;
 
@@ -63,28 +57,28 @@ namespace RoleManagment
 
             if(this.db_table != "" && search_query != "" && search_data != "")
             {
-                var user = this.get("SELECT id, "+ keys + " FROM "+ this.db_table + " WHERE " + search_query + " = '" + search_data + "' LIMIT 1");
+                var sql = this.get("SELECT id, "+ keys + " FROM "+ this.db_table + " WHERE " + search_query + " = '" + search_data + "' LIMIT 1");
 
-                while (user.Read())
+                while (sql.Read())
                 {
-                    this.id = user.GetInt32(0);
+                    this.id = sql.GetInt32(0);
 
                     int count = 1;
                     foreach (PropertyInfo prop in this.GetType().GetProperties())
                     {
                         try
                         {
-                            prop.SetValue(this, user.GetInt32(count));
+                            prop.SetValue(this, sql.GetInt32(count));
                         } catch (Exception)
                         {
                             try
                             {
-                                prop.SetValue(this, user.GetString(count));
+                                prop.SetValue(this, sql.GetString(count));
                             } catch (Exception)
                             {
                                 try
                                 {
-                                    prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, user.GetInt32(count)));
+                                    prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, sql.GetInt32(count)));
                                 } catch (Exception) { }
                             }
                         }
@@ -92,9 +86,8 @@ namespace RoleManagment
                     }
 
                 }
-                user.Close();
+                sql.Close();
             }
-
         }
 
         // Saves all information to the database
@@ -130,19 +123,19 @@ namespace RoleManagment
                     }
                     catch (Exception)
                     {
-                        throw new Exception("Failed to save user");
+                        throw new Exception("Failed to save");
                     }
                 }
                 else
                 {
                     try
                     {
-                        this.set("INSERT INTO user("+ keys + ") VALUES ("+ values +")");
+                        this.set("INSERT INTO " + this.db_table + "(" + keys + ") VALUES ("+ values +")");
                         this.id = this.getLastId();
                     }
                     catch (Exception)
                     {
-                        throw new Exception("Failed to insert user");
+                        throw new Exception("Failed to insert");
                     }
                 }
             }
@@ -159,7 +152,7 @@ namespace RoleManagment
                 }
                 catch (Exception)
                 {
-                    throw new Exception("Failed to delete user");
+                    throw new Exception("Failed to delete");
                 }
             }
         }
@@ -205,7 +198,7 @@ namespace RoleManagment
                         ObjData.Add(prop.Name, (string)prop.GetValue(this));
                     }                    
                 }
-                catch (Exception)
+                catch
                 {
                     try
                     {
@@ -225,7 +218,14 @@ namespace RoleManagment
                         //Console.WriteLine(obj.id.ToString());
                         ObjData.Add(prop.Name, obj.id.ToString());
                     }
-                    catch (Exception) { }
+                    catch 
+                    {
+                        try
+                        {
+                            ObjData.Add(prop.Name, prop.GetValue(this).ToString());
+                        }
+                        catch { }
+                    }
                 }
             }
 

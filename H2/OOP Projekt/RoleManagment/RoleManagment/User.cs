@@ -10,6 +10,7 @@ namespace RoleManagment
         public string username { get; set; }
         public string password { get; private set; }
         public Role role { get; set; }
+        public MailBox mailbox { get; set; }
 
         public User(int id = 0) : base("user", "id", id.ToString())
         {
