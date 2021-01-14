@@ -13,7 +13,7 @@ namespace RoleManagment
         public MailBox(int id = 0) : base("mailbox", "id", id.ToString())
         {
             this.x_allMails = new List<Mail>();
-            this.updateMails();
+            //this.updateMails();
         }
 
         public void updateMails()
@@ -36,7 +36,9 @@ namespace RoleManagment
             int inbox_from_count = 0;
             int sent_count = 0;
 
-            foreach (Mail m in x_allMails)
+            this.updateMails();
+
+            foreach (Mail m in this.x_allMails)
             {
                 if(m.inbox_from == this.id)
                 {

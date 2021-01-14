@@ -174,6 +174,9 @@ namespace Cmd
                 Console.WriteLine("Select user to sent a mail to.");
                 var users = User.getAllUsers();
                 var count = 0;
+
+                Console.WriteLine("x. Back");
+
                 foreach (User us in users)
                 {
                     Console.WriteLine(count + ". " + us.username);
@@ -183,6 +186,11 @@ namespace Cmd
                 Console.WriteLine("");
                 Console.Write("Option: ");
                 var option = Console.ReadLine();
+
+                if(option == "x")
+                {
+                    home(u);
+                }
 
                 try
                 {
@@ -230,6 +238,8 @@ namespace Cmd
 
                 u.mailbox.updateMails();
 
+                Console.WriteLine("x. Back");
+
                 int count = 0;
                 foreach (Mail m in u.mailbox.x_allMails)
                 {
@@ -243,13 +253,17 @@ namespace Cmd
                 Console.Write("Option: ");
                 var option = Console.ReadLine();
 
+                if (option == "x")
+                {
+                    home(u);
+                }
+
                 try
                 {
                     Mail m = u.mailbox.x_allMails[Int32.Parse(option)];
 
                     m.seen = true;
                     m.save();
-                    u.mailbox.updateMails();
                     u.mailbox.save();
 
                     Console.WriteLine("Title: " + m.title);
