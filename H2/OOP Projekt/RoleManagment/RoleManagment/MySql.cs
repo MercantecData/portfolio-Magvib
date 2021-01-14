@@ -66,20 +66,32 @@ namespace RoleManagment
                     int count = 1;
                     foreach (PropertyInfo prop in this.GetType().GetProperties())
                     {
-                        try
+                        try // Bool
                         {
-                            prop.SetValue(this, sql.GetInt32(count));
-                        } catch (Exception)
+                            prop.SetValue(this, Convert.ToBoolean(sql.GetInt32(count)));
+                        } catch
                         {
-                            try
+                            try // Int
                             {
-                                prop.SetValue(this, sql.GetString(count));
-                            } catch (Exception)
+                                prop.SetValue(this, sql.GetInt32(count));
+                            } catch
                             {
-                                try
+                                try // String
                                 {
-                                    prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, sql.GetInt32(count)));
-                                } catch (Exception) { }
+                                    prop.SetValue(this, sql.GetString(count));
+                                } catch
+                                {
+                                    try // Class object
+                                    {
+                                        prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, sql.GetInt32(count)));
+                                    } catch
+                                    {
+                                        try // Empty class object
+                                        {
+                                            prop.SetValue(this, Activator.CreateInstance(prop.PropertyType));
+                                        } catch { }
+                                    }
+                                }
                             }
                         }
                         count++;

@@ -10,7 +10,7 @@ namespace Cmd
         static void Main(string[] args)
         {
             //User u = new User("Magvib");
-            //Mail m = new Mail();
+            //Mail m = new Mail(7);
 
             while (true)
             {
@@ -121,7 +121,8 @@ namespace Cmd
                 Console.WriteLine("");
                 Console.WriteLine("1. Change password");
                 Console.WriteLine("2. Delete account");
-                Console.WriteLine("3. Send mail (coming soon)");
+                Console.WriteLine("3. Inbox ("+u.mailbox.inbox+")");
+                Console.WriteLine("4. Send mail (" + u.mailbox.sent + ")");
                 Console.WriteLine("5. Logout");
 
                 if (u.role.role == "Admin")
@@ -141,9 +142,125 @@ namespace Cmd
                     deleteAccount(u);
                 }
 
+                if (option.Key == ConsoleKey.D3)
+                {
+                    inbox(u);
+                }
+
+                if (option.Key == ConsoleKey.D4)
+                {
+                    sendMail(u);
+                }
+
                 if (option.Key == ConsoleKey.D9 && u.role.role == "Admin")
                 {
                     admin(u);
+                }
+            }
+
+            void sendMail(User u, string msg = "")
+            {
+                Console.Clear();
+
+                if (msg != "")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(msg);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Hello " + u.username);
+
+                Console.WriteLine("Select user to sent a mail to.");
+                var users = User.getAllUsers();
+                var count = 0;
+                foreach (User us in users)
+                {
+                    Console.WriteLine(count + ". " + us.username);
+                    count++;
+                }
+
+                Console.WriteLine("");
+                Console.Write("Option: ");
+                var option = Console.ReadLine();
+
+                try
+                {
+                    User sendTo = users[Int32.Parse(option)];
+
+                    Console.Write("Title: ");
+                    var title = Console.ReadLine();
+
+                    Console.Write("Message: ");
+                    var message = Console.ReadLine();
+
+                    Mail m = new Mail();
+                    m.inbox_from = u.mailbox.id;
+                    m.inbox_to = sendTo.mailbox.id;
+                    m.title = title;
+                    m.message = message;
+                    m.seen = false;
+
+                    m.save();
+                    new MailBox(m.inbox_to).save();
+                    u.mailbox.updateMails();
+                    u.mailbox.save();
+
+                    home(u, "Mail sent");
+                } catch
+                {
+                    sendMail(u, "Can't find the specified user");
+                }
+            }
+
+            void inbox(User u, string msg = "")
+            {
+                Console.Clear();
+
+                if (msg != "")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(msg);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Hello " + u.username);
+
+                Console.WriteLine("Inbox.");
+
+                u.mailbox.updateMails();
+
+                int count = 0;
+                foreach (Mail m in u.mailbox.x_allMails)
+                {
+                    if(m.inbox_to == u.mailbox.id)
+                    {
+                        Console.WriteLine(count + ". " + m.title + (m.seen ? " (seen)" : ""));
+                    }
+                    count++;
+                }
+
+                Console.Write("Option: ");
+                var option = Console.ReadLine();
+
+                try
+                {
+                    Mail m = u.mailbox.x_allMails[Int32.Parse(option)];
+
+                    m.seen = true;
+                    m.save();
+                    u.mailbox.updateMails();
+                    u.mailbox.save();
+
+                    Console.WriteLine("Title: " + m.title);
+                    Console.WriteLine("Message: " + m.message);
+                    Console.WriteLine("From: " + m.from().username);
+
+                    Console.ReadLine();
+                    home(u);
+                } catch
+                {
+                    home(u);
                 }
             }
 
@@ -151,7 +268,7 @@ namespace Cmd
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Hello " + u.username);
+                Console.WriteLine("Change password for " + u.username);
 
                 Console.Write("Old password: ");
                 var oldPassword = Console.ReadLine();
@@ -183,7 +300,7 @@ namespace Cmd
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Hello " + u.username);
+                Console.WriteLine("Delete " + u.username);
 
                 Console.Write("Password: ");
                 var password = Console.ReadLine();

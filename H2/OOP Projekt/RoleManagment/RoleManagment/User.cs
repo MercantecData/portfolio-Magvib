@@ -14,10 +14,22 @@ namespace RoleManagment
 
         public User(int id = 0) : base("user", "id", id.ToString())
         {
+            if(this.mailbox == null && this.id != 0)
+            {
+                this.mailbox = new MailBox();
+                this.mailbox.save();
+                this.save();
+            }
         }
 
         public User(string username) : base("user", "username", username)
         {
+            if (this.mailbox == null && this.id != 0)
+            {
+                this.mailbox = new MailBox();
+                this.mailbox.save();
+                this.save();
+            }
         }
 
         public bool checkPassword(string pass)

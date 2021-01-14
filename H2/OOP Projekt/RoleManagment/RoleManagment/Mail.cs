@@ -19,5 +19,17 @@ namespace RoleManagment
         {
 
         }
+
+        public User from()
+        {
+            int id = 0;
+            var sql = this.get("SELECT user.id FROM user LEFT JOIN mailbox ON mailbox.id = user.mailbox LEFT JOIN mail ON mail.inbox_from = mailbox.id WHERE mail.inbox_from = " + this.inbox_from + ";");
+            while (sql.Read())
+            {
+                id = sql.GetInt32(0);
+            }
+            sql.Close();
+            return new User(id);
+        }
     }
 }

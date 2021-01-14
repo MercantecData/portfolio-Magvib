@@ -43,7 +43,7 @@ namespace RoleManagment
                     inbox_from_count++;
                 }
 
-                if (m.inbox_to == this.id)
+                if (m.inbox_to == this.id && m.seen == false)
                 {
                     sent_count++;
                 }
@@ -53,6 +53,18 @@ namespace RoleManagment
             this.sent = inbox_from_count;
 
             base.save();
+        }
+
+        public override void delete()
+        {
+            this.updateMails();
+
+            foreach (Mail m in x_allMails)
+            {
+                m.delete();
+            }
+
+            base.delete();
         }
     }
 }
