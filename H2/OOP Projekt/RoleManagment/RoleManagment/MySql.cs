@@ -17,19 +17,30 @@ namespace RoleManagment
         private string db_name = "dev";
         private string db_user = "test";
         private string db_pass = "8e607a4752fa2e59413e5790536f2b42";
+        private string db_search_query;
+        private string db_search_data;
 
         MySqlConnection con;
 
         public MySql(string db_table = "", string search_query = "", string search_data = "")
         {
             this.db_table = db_table;
+            this.db_search_query = search_query;
+            this.db_search_data = search_data;
+            this.load();
+        }
 
+        // Load all data into properties
+        private async void load()
+        {
             string cs = "server=" + this.db_host + ";user=" + this.db_user + ";database=" + this.db_name + ";port=" + this.db_port + ";password=" + this.db_pass;
 
-            try {
+            try
+            {
                 this.con = new MySqlConnection(cs);
-                this.con.Open();
-            } catch (Exception)
+                await this.con.OpenAsync();
+            }
+            catch (Exception)
             {
                 Console.WriteLine("Can't connect to db");
             }
@@ -45,7 +56,7 @@ namespace RoleManagment
 
             foreach (KeyValuePair<string, string> o in ObjData)
             {
-                if(o.Value == null)
+                if (o.Value == null)
                 {
                     continue;
                 }
@@ -56,11 +67,11 @@ namespace RoleManagment
                 catch (Exception) { }
             }
 
-            if(this.db_table != "" && search_query != "" && search_data != "")
+            if (this.db_table != "" && this.db_search_query != "" && this.db_search_data != "")
             {
-                var sql = this.get("SELECT id, "+ keys + " FROM "+ this.db_table + " WHERE " + search_query + " = '" + search_data + "' LIMIT 1");
+                var sql = this.get("SELECT id, " + keys + " FROM " + this.db_table + " WHERE " + this.db_search_query + " = '" + this.db_search_data + "' LIMIT 1");
 
-                while (sql.Read())
+                while (await sql.ReadAsync())
                 {
                     this.id = sql.GetInt32(0);
 
@@ -70,27 +81,32 @@ namespace RoleManagment
                         try // Bool
                         {
                             prop.SetValue(this, Convert.ToBoolean(sql.GetInt32(count)));
-                        } catch
+                        }
+                        catch
                         {
                             try // Int
                             {
                                 prop.SetValue(this, sql.GetInt32(count));
-                            } catch
+                            }
+                            catch
                             {
                                 try // String
                                 {
                                     prop.SetValue(this, sql.GetString(count));
-                                } catch
+                                }
+                                catch
                                 {
                                     try // Class object
                                     {
                                         prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, sql.GetInt32(count)));
-                                    } catch
+                                    }
+                                    catch
                                     {
                                         try // Empty class object
                                         {
                                             prop.SetValue(this, Activator.CreateInstance(prop.PropertyType));
-                                        } catch { }
+                                        }
+                                        catch { }
                                     }
                                 }
                             }
