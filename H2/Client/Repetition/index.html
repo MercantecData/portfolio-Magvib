@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <!-- Jquery & Vue V2 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="game" class="row" style="width: 100.8vw;">
+        
+        <div v-if="updateB" v-for="(g, k) in grid" @click="chose(k)" style="height: 30vh;font-size: 8vw;" :class="{ 'bg-warning': (wonPattern.includes(k)), 'bg-success': (g == 'X'), 'bg-primary': (g == 'O'), 'bg-dark': (g == '') }" class="col-4 border text-center">{{ g }}</div>
+        
+        <div v-if="won" style="font-size: 50px;" class="col-12 text-center">Player {{ (player == true ? 'O' : 'X') }} won <button @click="resetGame" class="btn btn-primary">Reset</button></div>
+        <div v-if="draw" style="font-size: 50px;" class="col-12 text-center">It was a draw <button @click="resetGame" class="btn btn-primary">Reset</button></div>
+    </div>
+
+    <script>
+        var game = new Vue({
+            el: '#game',
+            data: {
+                player: true,
+                grid: ["","","","","","","","",""],
+                updateB: true,
+                wonPattern: [],
+                won: false,
+                draw: false,
+                ws: new WebSocket((document.location.protocol == "https:" ? "wss://" : "ws://") + document.location.host),
+            },
+            created() {
+                var vue = this;
+
+                this.ws.onopen = () => {
+                    console.log("Connected to server");
+                };
+
+                this.ws.onmessage = (e) => {
+                    var data = JSON.parse(e.data);
+                    console.log(data);
+
+                    // Returns all data into the vue instance
+                    for (const [key, value] of Object.entries(data)) {
+                        vue[key] = value;
+                    }
+
+                    if(this.won || this.draw) {
+                        if(!this.grid.includes("X") && !this.grid.includes("O")) {
+                            this.resetGame();
+                        }
+                    }
+
+                    vue.updateBoard();
+                    this.checkWon();
+                };
+            },
+            methods: {
+                chose: function (id) {
+                    if(this.grid[id] != "" || this.won) {
+                        return;
+                    }
+
+                    if(this.player == true)
+                        this.grid[id] = "X";
+                    
+                    if(this.player == false)
+                        this.grid[id] = "O";
+
+                    // Change player
+                    this.player = !this.player;
+
+                    this.ws.send(JSON.stringify({
+                        grid: this.grid,
+                        player: this.player,
+                    }));
+                    
+                    // Renders the board again
+                    this.updateBoard();
+                    this.checkWon();
+                },
+                updateBoard: function() {
+                    this.updateB = false;
+                    this.updateB = true;
+                },
+                checkWon: function() {
+                    g = this.grid;
+                    if(g[0] == g[1] && g[0] == g[2] && g[0] != "")
+                        this.hasWon([0, 1, 2]);
+                    if(g[3] == g[4] && g[3] == g[5] && g[3] != "")
+                        this.hasWon([3, 4, 5]);
+                    if(g[6] == g[7] && g[6] == g[8] && g[6] != "")
+                        this.hasWon([6, 7, 8]);
+                    if(g[0] == g[3] && g[0] == g[6] && g[0] != "")
+                        this.hasWon([0, 3, 6]);
+                    if(g[1] == g[4] && g[1] == g[7] && g[1] != "")
+                        this.hasWon([1, 4, 7]);
+                    if(g[2] == g[5] && g[2] == g[8] && g[2] != "")
+                        this.hasWon([2, 5, 8]);
+                    if(g[0] == g[4] && g[0] == g[8] && g[0] != "")
+                        this.hasWon([0, 4, 8]);
+                    if(g[2] == g[4] && g[2] == g[6] && g[2] != "")
+                        this.hasWon([2, 4, 6]);
+                    if(g[0] != "" && g[1] != "" && g[2] != "" && g[3] != "" && g[4] != "" && g[5] != "" && g[6] != "" && g[7] != "" && g[8] != "" && this.won == false)
+                        this.draw = true;
+                },
+                hasWon: function(arr) {
+                    this.won = true;
+                    this.wonPattern = this.wonPattern.concat(arr);
+                },
+                resetGame: function() {
+                    this.player = true;
+                    this.grid = ["","","","","","","","",""];
+
+                    this.ws.send(JSON.stringify({
+                        grid: this.grid,
+                        player: this.player,
+                    }));
+
+                    this.updateB = true;
+                    this.won = false;
+                    this.draw = false;
+                    this.wonPattern = [];
+                },
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!-- Docker Build -->
+<!-- docker build . -t repetition:latest -->
+
+<!-- Docker Run -->
+<!-- docker run --rm -d -p 1234:80/tcp repetition:latest -->

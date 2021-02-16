@@ -1,0 +1,22 @@
+﻿<Window x:Class="ArrayOfStrings.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArrayOfStrings"
+        mc:Ignorable="d"
+        Title="Website Open" Height="305.131" Width="582.169">
+    <Grid>
+        <Button x:Name="b1" Content="Open Link" Margin="153,236,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" HorizontalAlignment="Left"/>
+        <TextBox x:Name="t1" Height="23" Margin="28,236,0,0" TextWrapping="Wrap" Text="www.google.dk" VerticalAlignment="Top" Width="120" HorizontalAlignment="Left"/>
+        <TextBlock HorizontalAlignment="Left" Margin="98,3,0,0" TextWrapping="Wrap" Text="Bookmarks" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="362,3,0,0" TextWrapping="Wrap" Text="Create Bookmark" VerticalAlignment="Top" Width="119" Height="16"/>
+        <TextBox x:Name="BNavn" HorizontalAlignment="Left" Height="23" Margin="362,34,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="BUrl" HorizontalAlignment="Left" Height="23" Margin="362,70,0,0" TextWrapping="Wrap" Text="Url" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="BSave" Content="Save" Margin="362,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" HorizontalAlignment="Left"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="201" Margin="28,30,0,0" VerticalAlignment="Top" Width="200">
+            <StackPanel x:Name="sp" Height="207000" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left"/>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

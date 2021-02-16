@@ -1,0 +1,36 @@
+body {
+    background-color: #343a40;
+    text-align: center;
+    margin: 15vh;
+    display: flex;
+}
+
+p {
+    color: #FF8C00;
+    font-size: 30px;
+}
+
+.citySelector {
+    font-size: 30px;
+    color: #00FF7F;
+    background: #343a40;
+}
+
+.citySearchSelector {
+    font-size: 17px;
+    color: #00FF7F;
+    background: #343a40;
+}
+
+.title {
+    color: #00FF7F;
+    text-decoration: underline;
+}
+
+#w1 {
+    width: 50%;
+}
+
+#w2 {
+    width: 50%;
+}

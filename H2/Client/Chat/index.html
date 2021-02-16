@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div id="chat">
+        <div id="chat-header">
+            <h1><b>Chat</b></h1>
+        </div>
+        <ul id="chat-body">
+            <!-- List of messages -->
+            <!-- <li class="chat-text">wasd</li>
+            <li class="chat-text me">wasd</li> -->
+        </ul>
+        <div id="chat-login">
+            <div>
+                <h1>Username</h1>
+                <input type="text" id="username">
+                <br><br>
+                <button id="login">Login</button>
+            </div>
+        </div>
+        <div id="chat-footer">
+            <!-- Message: -->
+            <h1>Message:</h1>
+            <!-- Input -->
+            <input list="users" type="text" id="message">
+
+            <!-- Button (Send) -->
+            <button id="send">Send</button>
+        </div>
+    </div>
+
+    <div id="active-users">
+        <div id="active-users-header"><h1><b>Online</b></h1></div>
+        <ul id="active-users-body"></ul>
+    </div>
+
+    <datalist id="users"></datalist>
+
+    <datalist id="commands">
+        <option value="!kick">
+        <option value="!send">
+        <option value="!login">
+        <option value="!clear">
+        <option value="!alert">
+        <option value="!a">
+    </datalist>
+</body>
+</html>

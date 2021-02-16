@@ -1,0 +1,28 @@
+﻿<Window x:Class="REST.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:REST"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="reload" Content="Reload" HorizontalAlignment="Left" Margin="19,344,0,0" VerticalAlignment="Top" Width="173" Height="46" Click="Button_Click"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="311" Margin="19,10,0,0" VerticalAlignment="Top" Width="351">
+            <StackPanel x:Name="sp1" HorizontalAlignment="Left" Height="31100" VerticalAlignment="Top" Width="327"/>
+        </ScrollViewer>
+        <Button x:Name="add" Content="Add" HorizontalAlignment="Left" Margin="418,344,0,0" VerticalAlignment="Top" Width="173" Height="46" Click="Button_Click"/>
+        <TextBox x:Name="tName" HorizontalAlignment="Left" Height="23" Margin="542,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tDesc" HorizontalAlignment="Left" Height="23" Margin="542,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="503,75,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Height="23"/>
+        <TextBlock HorizontalAlignment="Left" Margin="474,108,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="23"/>
+        <TextBox x:Name="tUrl" HorizontalAlignment="Left" Height="23" Margin="542,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="519,140,0,0" TextWrapping="Wrap" Text="Url:" VerticalAlignment="Top" Height="23"/>
+        <TextBox x:Name="tAge" HorizontalAlignment="Left" Height="23" Margin="542,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="513,175,0,0" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top" Height="23"/>
+        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" Margin="596,344,0,0" VerticalAlignment="Top" Width="173" Height="46" Click="Button_Click"/>
+        <Button x:Name="reset" Content="Reset" HorizontalAlignment="Left" Margin="197,344,0,0" VerticalAlignment="Top" Width="173" Height="46" Click="Button_Click"/>
+        <Button x:Name="open_url" Content="Open Url" HorizontalAlignment="Left" Margin="418,293,0,0" VerticalAlignment="Top" Width="173" Height="46" Click="Button_Click"/>
+
+    </Grid>
+</Window>
